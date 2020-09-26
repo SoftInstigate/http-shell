@@ -1,0 +1,11 @@
+{
+  "ogSiteName": "RESTHeart Shell",
+  "ogTitle": "RESTHeart Shell: The CLI for RESTHeart",
+  "ogUrl": "http://github.com/softinstigate/restheart-shell",
+  "ogDescription": "ESTHeart Shell is a CLI tool that provides developers a modern alternative to http clients for interacting with RESTHeart.",
+  "ogImage": "https://restheart.org/images/rh_logo_vert.png",
+  "ogLabel1": "Clone RESTHeart Shell on GitHub",
+  "ogData1": "https://github.com/softinstigate/restheart-shell",
+  "ogLabel2": "Clone RESTHeart on GitHub",
+  "ogData2": "https://github.com/softinstigate/restheart"
+}
