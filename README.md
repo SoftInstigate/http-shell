@@ -2,6 +2,12 @@
 
 **RESTHeart Shell** is a CLI tool that provides developers a modern alternative to http clients for interacting with RESTHeart.
 
+![RESTHeart Shell Image](images/rhsImage.png)
+
+## Alpha stage
+
+Note: this project is at alpha stage. Heavy work in progress!
+
 ## How to run
 
 ```
