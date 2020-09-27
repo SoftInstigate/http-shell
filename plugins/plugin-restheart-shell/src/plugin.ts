@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  * Copyright 2020 SoftInstigate Srl
  *
@@ -15,50 +14,91 @@
  * limitations under the License.
  */
 
-import { Registrar, MultiModalResponse, Store } from "@kui-shell/core";
+import {
+  Arguments,
+  Registrar,
+  MultiModalResponse,
+  Store,
+  Table,
+  UsageError
+} from "@kui-shell/core";
+import Debug from "debug";
+import { setAuthUsage, setUrlUsage, getUsage } from "./usage";
 
+const debug = Debug("plugins/restheart-shell");
 const unirest = require("unirest");
 
-export default async (kui: Registrar) => {
-  kui.listen(
+export default async (registrar: Registrar) => {
+  registrar.listen(
     "/test",
-    (req: {
-      argv: any;
-      argvNoOptions: any;
-      command: any;
-      parsedOptions: any;
-    }) => `argv ${req.argv}
-argvNoOptions ${req.argvNoOptions}
-command ${req.command}
-parsedOptions ${JSON.stringify(req.parsedOptions)}`
+    (args: Arguments) => `argv ${args.argv}
+argvNoOptions ${args.argvNoOptions}
+command ${args.command}
+parsedOptions ${JSON.stringify(args.parsedOptions)}`
   );
 
-  kui.listen("/signin", (req: { argvNoOptions: string | any }) => {
-    if (!req.argvNoOptions || req.argvNoOptions.length < 3) {
-      return "usage: login id pwd";
+  // const setAuth =  async
+  const setAuth = ({ argvNoOptions: args }: Arguments) => {
+    debug("setAuth invoked");
+    if (!args || args.length < 4) {
+      throw new UsageError({ usage: setAuthUsage });
     } else {
-      Store().setItem("id", req.argvNoOptions[1]);
-      Store().setItem("pwd", req.argvNoOptions[2]);
+      Store().setItem("id", args[2]);
+      Store().setItem("pwd", args[3]);
 
-      return `credentials set`;
+      return "ok";
     }
+  };
+
+  registrar.listen("/set/auth", setAuth, {
+    usage: setAuthUsage
   });
 
-  kui.listen("/set/url-prefix", (req: { argvNoOptions: string | any }) => {
-    if (!req.argvNoOptions || req.argvNoOptions.length < 3) {
-      return "usage: set url-prefix <url>";
-    } else {
-      Store().setItem("url-prefix", req.argvNoOptions[2]);
+  registrar.listen("/get/auth", () => {
+    const t: Table = {
+      header: { name: "property", attributes: [{ value: "value" }] },
+      body: [
+        { name: "id", attributes: [{ value: `${Store().getItem("id")}` }] },
+        {
+          name: "password",
+          attributes: [{ value: `${Store().getItem("pwd")}` }]
+        }
+      ]
+    };
 
-      return `url prefix set as ${req.argvNoOptions[2]}`;
-    }
+    return t;
   });
 
-  kui.listen("/get", (req: { argvNoOptions: string | any }) => {
-    if (!req.argvNoOptions || req.argvNoOptions.length < 2) {
-      return "usage: get <uri>";
+  registrar.listen(
+    "/set/url",
+    ({ argvNoOptions: args }: Arguments) => {
+      if (!args || args.length < 3) {
+        throw new UsageError({ usage: setUrlUsage });
+      } else {
+        Store().setItem("url", args[2]);
+
+        return "ok";
+      }
+    },
+    { usage: setUrlUsage }
+  );
+
+  registrar.listen("/get/url", () => {
+    const t: Table = {
+      header: { name: "property", attributes: [{ value: "value" }] },
+      body: [
+        { name: "url", attributes: [{ value: `${Store().getItem("url")}` }] }
+      ]
+    };
+
+    return t;
+  });
+
+  registrar.listen("/get", ({ argvNoOptions: args }: Arguments) => {
+    if (!args || args.length < 2) {
+      throw new UsageError({ usage: getUsage });
     } else {
-      const uri = req.argvNoOptions[1];
+      const uri = args[1];
       const urlPrefix = Store().getItem("url-prefix");
 
       if (!urlPrefix) {
@@ -82,7 +122,7 @@ parsedOptions ${JSON.stringify(req.parsedOptions)}`
         })
         .then((body: string) => {
           const ret: MultiModalResponse = {
-            metadata: { name: "🐱" },
+            metadata: { name: `🐱 GET ${urlPrefix}${uri}` },
             kind: "Top",
             modes: [
               {
