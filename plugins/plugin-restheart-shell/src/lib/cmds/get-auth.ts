@@ -35,7 +35,7 @@ const getAuthCmd = async () => {
 };
 
 export const registerGetAuth = async (registrar: Registrar) => {
-  registrar.listen("/get/url", getAuthCmd, {
+  registrar.listen("/get/auth", getAuthCmd, {
     noAuthOk: true,
     inBrowserOk: true
   });

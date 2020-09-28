@@ -32,10 +32,10 @@ const getCmd = async ({ argvNoOptions: args }: Arguments) => {
     throw new UsageError({ usage: usage });
   } else {
     const uri = args[1];
-    const urlPrefix = Store().getItem("url-prefix");
+    const urlPrefix = Store().getItem("url");
 
     if (!urlPrefix) {
-      return 'url prefix not set. use "set url-prefix"';
+      return 'url not set. use "set url"';
     }
 
     return unirest
