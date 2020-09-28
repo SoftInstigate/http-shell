@@ -21,7 +21,7 @@ Then in other terminal
 $ npm run open
 ```
 
-## Get help
+## Get help
 
 As soon as the shell starts, get commands usage help with:
 
