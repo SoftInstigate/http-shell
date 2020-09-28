@@ -14,22 +14,26 @@
  * limitations under the License.
  */
 
-import { Registrar } from "@kui-shell/core";
+import { Arguments, Registrar, Store, UsageError } from "@kui-shell/core";
 // import Debug from "debug";
-import { registerTest } from "./lib/cmds/test";
-import { registerSetAuth } from "./lib/cmds/set-auth";
-import { registerSetUrl } from "./lib/cmds/set-url";
-import { registerGetUrl } from "./lib/cmds/get-url";
-import { registerGetAuth } from "./lib/cmds/get-auth";
-import { registerGet } from "./lib/cmds/get";
+import { setUrlUsage as usage } from "../usage";
 
-// const debug = Debug("plugins/restheart-shell");
+// const debug = Debug("plugins/restheart-shell/set-url");
 
-export default async (registrar: Registrar) => {
-  registerTest(registrar);
-  registerSetAuth(registrar);
-  registerSetUrl(registrar);
-  registerGetUrl(registrar);
-  registerGetAuth(registrar);
-  registerGet(registrar);
+const setUrlCmd = async ({ argvNoOptions: args }: Arguments) => {
+  if (!args || args.length < 3) {
+    throw new UsageError({ usage: usage });
+  } else {
+    Store().setItem("url", args[2]);
+
+    return "ok";
+  }
+};
+
+export const registerSetUrl = async (registrar: Registrar) => {
+  registrar.listen("/set/url", setUrlCmd, {
+    usage: usage,
+    noAuthOk: true,
+    inBrowserOk: true
+  });
 };

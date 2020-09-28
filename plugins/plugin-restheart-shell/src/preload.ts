@@ -15,7 +15,7 @@
  */
 
 import { Registrar } from "@kui-shell/core";
-import { toplevelUsage as usage } from "./usage";
+import { toplevelUsage as usage } from "./lib/usage";
 import Debug from "debug";
 
 const debug = Debug("plugins/restheart-shell");

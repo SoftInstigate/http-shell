@@ -14,22 +14,29 @@
  * limitations under the License.
  */
 
-import { Registrar } from "@kui-shell/core";
+import { Registrar, Store, Table } from "@kui-shell/core";
 // import Debug from "debug";
-import { registerTest } from "./lib/cmds/test";
-import { registerSetAuth } from "./lib/cmds/set-auth";
-import { registerSetUrl } from "./lib/cmds/set-url";
-import { registerGetUrl } from "./lib/cmds/get-url";
-import { registerGetAuth } from "./lib/cmds/get-auth";
-import { registerGet } from "./lib/cmds/get";
 
-// const debug = Debug("plugins/restheart-shell");
+// const debug = Debug("plugins/restheart-shell/get-auth");
 
-export default async (registrar: Registrar) => {
-  registerTest(registrar);
-  registerSetAuth(registrar);
-  registerSetUrl(registrar);
-  registerGetUrl(registrar);
-  registerGetAuth(registrar);
-  registerGet(registrar);
+const getAuthCmd = async () => {
+  const t: Table = {
+    header: { name: "property", attributes: [{ value: "value" }] },
+    body: [
+      { name: "id", attributes: [{ value: `${Store().getItem("id")}` }] },
+      {
+        name: "password",
+        attributes: [{ value: "********" }]
+      }
+    ]
+  };
+
+  return t;
+};
+
+export const registerGetAuth = async (registrar: Registrar) => {
+  registrar.listen("/get/url", getAuthCmd, {
+    noAuthOk: true,
+    inBrowserOk: true
+  });
 };
