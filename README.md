@@ -21,6 +21,14 @@ Then in other terminal
 $ npm run open
 ```
 
+## Get help
+
+As soon as the shell starts, get commands usage help with:
+
+```
+restheart-shell> help restheart
+```
+
 ## Contribute
 
 [GitHub](https://github.com/softinstigate/restheart-shell "RESTHeart Shell's GitHub page")
