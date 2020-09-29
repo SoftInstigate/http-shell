@@ -19,7 +19,6 @@ import { Registrar, Store, Table } from "@kui-shell/core";
 
 // const debug = Debug("plugins/restheart-shell/get-url");
 
-// const setAuth =  async
 const getUrl = () => {
   const t: Table = {
     header: { name: "property", attributes: [{ value: "value" }] },

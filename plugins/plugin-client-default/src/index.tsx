@@ -27,6 +27,8 @@ import { productName } from '@kui-shell/client/config.d/name.json'
 
 import { CatDogWidget } from '../../plugin-example/mdist'
 
+import { CurrentUrlWidget, CurrentIdWidget, HelpWidget } from '@kui-shell/plugin-restheart-shell'
+
 const strings = i18n('plugin-client-default')
 
 /**
@@ -79,6 +81,9 @@ export default function renderMain(props: KuiProps) {
       <ContextWidgets>
         <CurrentWorkingDirectory />
         <CurrentGitBranch className="kui--hide-in-narrower-windows" />
+        <CurrentIdWidget />
+        <CurrentUrlWidget />
+        <HelpWidget />
       </ContextWidgets>
 
       <MeterWidgets>

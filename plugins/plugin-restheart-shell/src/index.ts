@@ -13,3 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+export { default as CurrentUrlWidget } from './view/CurrentUrlWidget'
+export { default as CurrentIdWidget } from './view/CurrentIdWidget'
+export { default as HelpWidget } from './view/HelpWidget'
