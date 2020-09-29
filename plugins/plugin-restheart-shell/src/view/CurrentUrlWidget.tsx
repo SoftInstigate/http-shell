@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 IBM Corporation
+ * Copyright 2020 SoftInstigate Srl
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,9 +22,6 @@ import {
 } from "@kui-shell/core";
 import { TextWithIconWidget } from "@kui-shell/plugin-client-common";
 import { Icons } from "@kui-shell/plugin-client-common"
-import Debug from "debug";
-
-const debug = Debug("plugins/restheart-shell/get-url");
 
 interface Props {
   className?: string;
@@ -53,8 +50,6 @@ export default class CurrentUrlWidget extends React.PureComponent<Props, State> 
     this.setState({
       url: Store().getItem("url") ? Store().getItem("url") : "no URL set"
     });
-
-    debug(`************* reportCurrentUrl ${this.state.url}`)
   }
 
   /**

@@ -45,7 +45,6 @@ const getCmd = async ({ argvNoOptions: args }: Arguments) => {
         "Content-Type": "application/json"
       })
       .auth(Store().getItem("id"), Store().getItem("pwd"))
-      .send({ parameter: 23, foo: "bar" })
       .then((response: { body: unknown }) =>
         JSON.stringify(response.body, null, 2)
       )
