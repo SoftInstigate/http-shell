@@ -1,23 +1,14 @@
 {
   "name": "@kui-shell/plugin-restheart-shell",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "RESTHeart Shell",
   "main": "dist/index.js",
+  "module": "mdist/index.js",
+  "types": "mdist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "kui": {
-    "headless": false,
-    "proxy": false
-  },
-  "dependencies": {
-    "unirest": "^0.6.0"
-  },
   "keywords": [],
-  "author": "",
-  "license": "Apache-2.0",
-  "private": true,
-  "publishConfig": {
-    "access": "public"
-  }
+  "author": "Andrea Di Cesare",
+  "license": "ISC"
 }

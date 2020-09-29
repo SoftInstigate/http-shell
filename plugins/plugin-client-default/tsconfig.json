@@ -5,7 +5,6 @@
     "composite": true,
     "jsx": "react",
     "outDir": "mdist",
-    "rootDir": "src",
-    "baseUrl": "."
+    "rootDir": "src"
   }
 }

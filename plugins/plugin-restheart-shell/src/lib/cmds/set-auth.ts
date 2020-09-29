@@ -33,10 +33,9 @@ const setAuth = ({ argvNoOptions: args }: Arguments) => {
   }
 };
 
-export const registerSetAuth = async (registrar: Registrar) => {
+export default async (registrar: Registrar) => {
   registrar.listen("/set/auth", setAuth, {
     usage,
-    noAuthOk: true,
-    inBrowserOk: true
+    noAuthOk: true
   });
 };

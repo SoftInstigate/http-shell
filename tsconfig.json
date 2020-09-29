@@ -1,4 +1,8 @@
 {
   "extends": "./node_modules/@kui-shell/builder/tsconfig-base.json",
-  "references": [{ "path": "./plugins/plugin-restheart-shell" }]
+  "references": [
+    { "path": "./plugins/plugin-example" },
+    { "path": "./plugins/plugin-client-default" },
+    { "path": "./plugins/plugin-restheart-shell" }
+  ]
 }

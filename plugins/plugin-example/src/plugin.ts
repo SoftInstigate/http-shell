@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 SoftInstigate Srl
+ * Copyright 2020 IBM Corporation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,25 +14,11 @@
  * limitations under the License.
  */
 
-import { Registrar, Store, Table } from "@kui-shell/core";
-// import Debug from "debug";
+import { Registrar } from '@kui-shell/core'
+import helloCatDogTerminal from './commands/hello-cat-dog-terminal'
+import helloCatNav from './commands/hello-catnav'
+import helloSidecat from './commands/hello-sidecat'
 
-// const debug = Debug("plugins/restheart-shell/get-url");
-
-// const setAuth =  async
-const getUrl = () => {
-  const t: Table = {
-    header: { name: "property", attributes: [{ value: "value" }] },
-    body: [
-      { name: "url", attributes: [{ value: `${Store().getItem("url")}` }] }
-    ]
-  };
-
-  return t;
-};
-
-export default async (registrar: Registrar) => {
-  registrar.listen("/get/url", getUrl, {
-    noAuthOk: true
-  });
-};
+export default async (kui: Registrar) => {
+  await Promise.all([helloCatDogTerminal(kui), helloSidecat(kui), helloCatNav(kui)])
+}

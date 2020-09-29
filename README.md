@@ -2,7 +2,7 @@
 
 **RESTHeart Shell** is a CLI tool that provides developers a modern alternative to http clients for interacting with RESTHeart.
 
-![RESTHeart Shell Image](images/rhsImage.png)
+![RESTHeart Shell Image](./plugins/plugin-client-default/images/rhsImage.png)
 
 ## Alpha stage
 
@@ -28,6 +28,10 @@ As soon as the shell starts, get commands usage help with:
 ```
 restheart-shell> help restheart
 ```
+
+## Acknowledgments
+
+Project derived from [AnimalApp Kui skeleton project](https://github.com/IBM/kui/tree/master/docs/example/AnimalApp)
 
 ## Contribute
 

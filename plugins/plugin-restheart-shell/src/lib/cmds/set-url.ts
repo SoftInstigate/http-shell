@@ -30,10 +30,9 @@ const setUrlCmd = async ({ argvNoOptions: args }: Arguments) => {
   }
 };
 
-export const registerSetUrl = async (registrar: Registrar) => {
+export default async (registrar: Registrar) => {
   registrar.listen("/set/url", setUrlCmd, {
     usage: usage,
-    noAuthOk: true,
-    inBrowserOk: true
+    noAuthOk: true
   });
 };

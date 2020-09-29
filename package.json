@@ -1,134 +1,77 @@
 {
   "name": "restheart-shell",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "A CLI tool that provides developers a modern alternative to http clients for interacting with RESTHeart.",
   "main": "node_modules/@kui-shell/core/dist/main/main.js",
   "scripts": {
-    "build:electron:mac": "KEEP_CLASSNAMES=true PLATFORM=mac kui-build-electron",
-    "build:electron:linux": "KEEP_CLASSNAMES=true PLATFORM=linux kui-build-electron",
-    "build:electron:win32": "KEEP_CLASSNAMES=true PLATFORM=win32 kui-build-electron",
+    "watch:source": "tsc --build . --watch",
+    "compile": "npx tsc --build . && npx kui-babel && npx kui-prescan",
+    "kill": "npm run kill:proxy; kill $(lsof -t -i:908${PORT_OFFSET-0}) > /dev/null 2> /dev/null || true",
+    "_watch": "bash -c \"npm run kill; export CSP_ALLOWED_HOSTS='http: https: data: filesystem: about: blob: ws: wss:'; kui-watch-webpack\"",
+    "watch:webpack": "bash -c \"npm run pty:nodejs && (npm run proxy &); npm run _watch $WATCH_ARGS\"",
+    "watch:electron": "bash -c \"npm run pty:electron && TARGET=electron-renderer npm run _watch\"",
+    "watch": "bash -c \"npm run kill; npm run compile && concurrently -n ES6,WEBPACK --kill-others 'npm run watch:source' 'npm run watch:electron'\"",
+    "proxy": "export PORT=8081; export KUI_USE_HTTP=true; npm run pty:nodejs && npx kui-run-proxy",
+    "kill:proxy": "kill $(lsof -t -i:808${PORT_OFFSET-1}) > /dev/null 2> /dev/null || true",
+    "pty:rebuild": "kui-pty-rebuild",
+    "pty:electron": "npm run pty:rebuild electron",
+    "pty:nodejs": "npm run pty:rebuild node",
+    "build:electron:mac": "PLATFORM=mac kui-build-electron",
+    "build:electron:osx": "npm run build:electron:mac",
+    "build:electron:linux": "PLATFORM=linux kui-build-electron",
+    "build:electron:win32": "PLATFORM=win32 kui-build-electron",
+    "build:electron:windows": "PLATFORM=win32 kui-build-electron",
     "build:electron:all": "kui-build-electron",
-    "compile:cjs": "kui-compile",
-    "compile:es6": "kui-compile tsconfig-es6.json",
-    "compile": "npm run compile:cjs && npm run compile:es6",
-    "watch:source": "concurrently './node_modules/.bin/tsc --build tsconfig-es6.json --watch' './node_modules/.bin/tsc --build tsconfig.json --watch'",
-    "_watch": "npm run kill && kui-watch-webpack",
-    "_webpack": "export CSP_ALLOWED_HOSTS=\"http://localhost:9953 ws://localhost:908${PORT_OFFSET-0} http://localhost:908${PORT_OFFSET-0}\"; npm run pty:nodejs && npm run _watch",
-    "_webpackproxy": "npm run pty:nodejs && (npm run proxy &) && npm run _watch",
-    "_electron": "npm run pty:electron && TARGET=electron-renderer npm run _watch",
-    "watch": "npm run compile && concurrently -n EJS,ES6,WEBPACK --kill-others './node_modules/.bin/tsc --build tsconfig.json --watch' 'npm run watch:source' 'npm run _electron'",
-    "watch:webpack": "npm run compile && concurrently -n EJS,ES6,WEBPACK --kill-others './node_modules/.bin/tsc --build tsconfig.json --watch' 'npm run watch:source' 'npm run _webpack'",
-    "watch:webpackproxy": "npm run compile && concurrently -n EJS,ES6,WEBPACK --kill-others './node_modules/.bin/tsc --build tsconfig.json --watch' 'npm run watch:source' 'npm run _webpackproxy'",
-    "kill": "kill $(lsof -t -i:908${PORT_OFFSET-0}) > /dev/null 2> /dev/null || true",
-    "proxy": "if [ -z \"$TRAVIS_JOB_ID\" ]; then npm run -s pty:nodejs; fi; kui-run-proxy",
-    "pty:rebuild": "if [ -d node_modules/node-pty-prebuilt-multiarch ]; then cd node_modules/node-pty-prebuilt-multiarch && npm run install; fi",
-    "pty:electron": "if [ -d node_modules/node-pty-prebuilt-multiarch ]; then if [ ! -e node_modules/node-pty-prebuilt-multiarch/.npmrc ]; then cp node_modules/@kui-shell/builder/npmrc node_modules/node-pty-prebuilt-multiarch/.npmrc && npm run pty:rebuild; fi; fi",
-    "pty:nodejs": "if [ -e node_modules/node-pty-prebuilt-multiarch/.npmrc ]; then rm -f node_modules/node-pty-prebuilt-multiarch/.npmrc; npm run pty:rebuild; fi",
-    "test:electron": "npm run kill && npm run _electron && KUI=$(echo \"$(pwd)/bin/oui-ascii\") kui-testv2",
-    "test:webpack": "export PORT_OFFSET=${PORT_OFFSET-0}; npm run kill && npm run _webpack && MOCHA_RUN_TARGET=webpack kui-testv2",
-    "test": "npm run -s test:electron",
-    "lint": "eslint '**/*.{js,ts}'",
-    "format": "prettier --write '**/*.{css,html,js,json,md,ts}'",
-    "postinstall": "npm run -s compile && npm run -s pty:electron",
-    "update": "ncu -u -x \"@types/yargs-parser,husky,electron,spectron,@types/webdriverio\" && for i in plugins/*; do (cd $i && ncu -u -x electron,spectron,@types/webdriverio && rm -rf node_modules); done && rm -rf node_modules/ package-lock.json  && npm install",
+    "build": "npm run compile && webpack --mode production",
+    "postinstall": "npm run compile",
     "open": "electron . shell",
-    "start": "echo \"use 'npm run watch' followed by 'npm run open'\""
+    "start": "WATCH_ARGS='-open' npm run watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines": {
-    "node": ">=8.15.0",
-    "npm": ">=5.7.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:softinstigate/restheart-shell.git"
-  },
-  "keywords": [
-    "restheart",
-    "cli",
-    "ui",
-    "kui"
-  ],
-  "author": "@ujibang",
-  "contributors": [],
+  "keywords": [],
+  "author": "",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@kui-shell/builder": "6.0.5",
-    "@kui-shell/test": "6.0.5",
-    "@kui-shell/webpack": "6.0.5",
-    "@types/mocha": "5.2.7",
-    "@types/node": "13.5.1",
-    "@types/swagger-schema-official": "^2.0.20",
-    "@types/uuid": "3.4.7",
-    "@types/webdriverio": "4.13.3",
-    "@typescript-eslint/eslint-plugin": "2.18.0",
-    "@typescript-eslint/parser": "2.18.0",
-    "concurrently": "5.1.0",
-    "electron": "6.1.7",
-    "eslint": "6.8.0",
-    "eslint-config-prettier": "6.10.0",
-    "eslint-config-standard": "14.1.0",
-    "eslint-plugin-import": "2.20.0",
-    "eslint-plugin-node": "11.0.0",
-    "eslint-plugin-promise": "4.2.1",
-    "eslint-plugin-standard": "4.0.1",
-    "husky": "3.1.0",
-    "lint-staged": "10.0.3",
-    "mocha": "7.0.1",
-    "prettier": "1.19.1",
-    "request-promise": "^4.2.5",
-    "spectron": "8.0.0",
-    "typescript": "3.7.5"
+    "@kui-shell/builder": "^8.12.2",
+    "@kui-shell/proxy": "^8.12.2",
+    "@kui-shell/react": "^8.12.2",
+    "@kui-shell/webpack": "^8.12.2",
+    "@types/carbon-components-react": "7.10.5",
+    "@types/carbon__icons-react": "10.10.0",
+    "@types/node": "12.12.31",
+    "@types/react": "16.9.38",
+    "@types/react-dom": "16.9.8",
+    "concurrently": "5.3.0",
+    "css-loader": "3.6.0",
+    "electron": "^7.3.3",
+    "file-loader": "6.0.0",
+    "font-config-webpack-plugin": "^2.0.0",
+    "html-loader": "1.1.0",
+    "html-webpack-plugin": "4.3.0",
+    "mini-css-extract-plugin": "0.9.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "sass": "1.26.9",
+    "sass-loader": "8.0.2",
+    "style-loader": "1.1.3",
+    "svg-inline-loader": "0.8.2",
+    "typescript": "3.9.6",
+    "webpack": "4.44.2",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.0"
   },
   "dependencies": {
-    "@kui-shell/client": "file:plugins/plugin-restheart-shell-client",
-    "@kui-shell/core": "6.0.5",
-    "@kui-shell/plugin-bash-like": "6.0.5",
-    "@kui-shell/plugin-client-common": "6.0.5",
-    "@kui-shell/plugin-client-default": "6.0.5",
-    "@kui-shell/plugin-core-support": "6.0.5",
-    "@kui-shell/plugin-core-themes": "6.0.5",
-    "@kui-shell/plugin-editor": "6.0.5",
-    "@kui-shell/plugin-restheart-shell": "file:plugins/plugin-restheart-shell",
-    "@types/yargs-parser": "^15.0.0",
-    "monaco-editor": "^0.15.6",
+    "@kui-shell/client": "file:./plugins/plugin-client-default",
+    "@kui-shell/plugin-restheart-shell": "file:./plugins/plugin-restheart-shell",
+    "@kui-shell/core": "^8.12.2",
+    "@kui-shell/plugin-bash-like": "^8.12.2",
+    "@kui-shell/plugin-carbon-themes": "^8.12.2",
+    "@kui-shell/plugin-client-common": "^8.12.2",
+    "@kui-shell/plugin-core-support": "^8.12.2",
+    "@kui-shell/plugin-electron-components": "^8.12.2",
+    "@kui-shell/plugin-example": "file:./plugins/plugin-example",
+    "@kui-shell/plugin-git": "^8.12.2",
+    "@kui-shell/plugin-proxy-support": "^8.12.2",
     "unirest": "^0.6.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "**/*.{css,html,js,json,md,ts}": [
-      "prettier --write",
-      "git add"
-    ],
-    "**/*.ts": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "release-it": {
-    "git": {
-      "commit": false,
-      "tag": false,
-      "push": false,
-      "requireUpstream": false
-    },
-    "npm": {
-      "publish": false
-    },
-    "github": {
-      "release": true,
-      "releaseNotes": "git log --pretty=format:\"* %s (%h)\" v${latestVersion}...HEAD",
-      "assets": [
-        "./dist/electron/restheart-shell-darwin-x64.tar.bz2",
-        "./dist/electron/restheart-shell-linux-x64.zip",
-        "./dist/electron/restheart-shell-win32-x64.zip"
-      ]
-    },
-    "hooks": {
-      "before:init": "if [ \"$TRAVIS_OS_NAME\" = \"linux\" ]; then sudo apt-get update && sudo apt-get install wine; fi; npm run build:electron:all"
-    }
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 SoftInstigate Srl
+ * Copyright 2020 IBM Corporation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,25 +14,16 @@
  * limitations under the License.
  */
 
-import { Registrar, Store, Table } from "@kui-shell/core";
-// import Debug from "debug";
-
-// const debug = Debug("plugins/restheart-shell/get-url");
-
-// const setAuth =  async
-const getUrl = () => {
-  const t: Table = {
-    header: { name: "property", attributes: [{ value: "value" }] },
-    body: [
-      { name: "url", attributes: [{ value: `${Store().getItem("url")}` }] }
-    ]
-  };
-
-  return t;
-};
-
-export default async (registrar: Registrar) => {
-  registrar.listen("/get/url", getUrl, {
-    noAuthOk: true
-  });
-};
+/**
+ * Register the welcome notebook
+ *
+ */
+export default async () => {
+  // coming soon, in kui 9.0.0
+  /* const { notebookVFS } = await import('@kui-shell/plugin-core-support')
+  notebookVFS.cp(
+    undefined,
+    ['plugin://plugin-client-common/notebooks/welcome.json', 'plugin://plugin-client-common/notebooks/settings.json'],
+    '/kui'
+  ) */
+}

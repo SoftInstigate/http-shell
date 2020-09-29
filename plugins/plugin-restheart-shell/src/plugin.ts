@@ -14,22 +14,29 @@
  * limitations under the License.
  */
 
-import { Registrar } from "@kui-shell/core";
+import { Registrar } from '@kui-shell/core';
 // import Debug from "debug";
-import { registerTest } from "./lib/cmds/test";
-import { registerSetAuth } from "./lib/cmds/set-auth";
-import { registerSetUrl } from "./lib/cmds/set-url";
-import { registerGetUrl } from "./lib/cmds/get-url";
-import { registerGetAuth } from "./lib/cmds/get-auth";
-import { registerGet } from "./lib/cmds/get";
+import test from './lib/cmds/test';
+import setauth from './lib/cmds/set-auth';
+import seturl from './lib/cmds/set-url';
+import geturl from './lib/cmds/get-url';
+import getauth from './lib/cmds/get-auth';
+import get from './lib/cmds/get';
+import helprestheart from './lib/cmds/help-restheart';
+import { toplevelUsage } from './lib/usage'
 
 // const debug = Debug("plugins/restheart-shell");
 
 export default async (registrar: Registrar) => {
-  registerTest(registrar);
-  registerSetAuth(registrar);
-  registerSetUrl(registrar);
-  registerGetUrl(registrar);
-  registerGetAuth(registrar);
-  registerGet(registrar);
+  const usage  = { usage: toplevelUsage.available }
+
+  Promise.all([
+    helprestheart(registrar),
+    test(registrar),
+    setauth(registrar),
+    seturl(registrar),
+    geturl(registrar),
+    getauth(registrar),
+    get(registrar),
+  ]);
 };

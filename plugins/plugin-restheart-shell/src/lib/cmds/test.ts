@@ -10,10 +10,9 @@ const test = (args: Arguments) => `argv ${args.argv}
 
 const usage = {};
 
-export const registerTest = async (registrar: Registrar) => {
+export default async (registrar: Registrar) => {
   registrar.listen("/test", test, {
     usage,
-    noAuthOk: true,
-    inBrowserOk: true
+    noAuthOk: true
   });
 };

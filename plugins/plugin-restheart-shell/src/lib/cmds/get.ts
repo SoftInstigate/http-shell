@@ -78,10 +78,9 @@ const getCmd = async ({ argvNoOptions: args }: Arguments) => {
   }
 };
 
-export const registerGet = async (registrar: Registrar) => {
+export default async (registrar: Registrar) => {
   registrar.listen("/get", getCmd, {
     usage: usage,
-    noAuthOk: true,
-    inBrowserOk: true
+    noAuthOk: true
   });
 };
