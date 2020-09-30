@@ -62,16 +62,15 @@
   },
   "dependencies": {
     "@kui-shell/client": "file:./plugins/plugin-client-default",
-    "@kui-shell/plugin-restheart-shell": "file:./plugins/plugin-restheart-shell",
     "@kui-shell/core": "^8.12.2",
     "@kui-shell/plugin-bash-like": "^8.12.2",
     "@kui-shell/plugin-carbon-themes": "^8.12.2",
     "@kui-shell/plugin-client-common": "^8.12.2",
     "@kui-shell/plugin-core-support": "^8.12.2",
     "@kui-shell/plugin-electron-components": "^8.12.2",
-    "@kui-shell/plugin-example": "file:./plugins/plugin-example",
     "@kui-shell/plugin-git": "^8.12.2",
     "@kui-shell/plugin-proxy-support": "^8.12.2",
+    "@kui-shell/plugin-restheart-shell": "file:./plugins/plugin-restheart-shell",
     "unirest": "^0.6.0"
   }
 }

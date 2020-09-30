@@ -1,4 +1,4 @@
-import { Arguments, Registrar, MultiModalResponse } from "@kui-shell/core";
+import { Registrar, MultiModalResponse } from "@kui-shell/core";
 // import Debug from "debug";
 
 // const debug = Debug("plugins/restheart-shell/test");
