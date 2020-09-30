@@ -71,6 +71,7 @@
     "@kui-shell/plugin-git": "^8.12.2",
     "@kui-shell/plugin-proxy-support": "^8.12.2",
     "@kui-shell/plugin-restheart-shell": "file:./plugins/plugin-restheart-shell",
-    "unirest": "^0.6.0"
+    "@types/superagent": "^4.1.10",
+    "superagent": "^6.1.0"
   }
 }

@@ -19,15 +19,17 @@ import {
   Arguments,
   Store,
   UsageError,
-  MultiModalResponse
+  MultiModalResponse,
 } from "@kui-shell/core";
 import { getUsage as usage } from "../usage";
-const unirest = require("unirest");
+
+import { get } from "superagent";
+
 // import Debug from "debug";
 
 // const debug = Debug("plugins/restheart-shell/get-auth");
 
-const getCmd = async ({ argvNoOptions: args }: Arguments) => {
+const getCmd = async ({ argvNoOptions: args }: Arguments): Promise<MultiModalResponse | string> => {
   if (!args || args.length < 2) {
     throw new UsageError({ usage: usage });
   } else {
@@ -38,12 +40,9 @@ const getCmd = async ({ argvNoOptions: args }: Arguments) => {
       return 'url not set. use "set url"';
     }
 
-    return unirest
-      .get(`${urlPrefix}${uri}`)
-      .headers({
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      })
+    return get(`${urlPrefix}${uri}`)
+      .accept("application/json")
+      .set("Content-Type", "application/json")
       .auth(Store().getItem("id"), Store().getItem("pwd"))
       .then((response: { body: unknown }) =>
         JSON.stringify(response.body, null, 2)
@@ -60,26 +59,27 @@ const getCmd = async ({ argvNoOptions: args }: Arguments) => {
             {
               mode: "Response",
               content: body,
-              contentType: "json"
+              contentType: "json",
             },
             {
               mode: "Request",
               content: `url: ${urlPrefix}${uri}\nid: ${Store().getItem(
                 "id"
               )}, password: ${Store().getItem("pwd")}`,
-              contentType: "text/markdown"
-            }
-          ]
+              contentType: "text/markdown",
+            },
+          ],
         };
 
         return ret;
-      });
+      })
+      .catch((error) => `error executing request ${JSON.stringify(error)}`);
   }
 };
 
 export default async (registrar: Registrar) => {
   registrar.listen("/get", getCmd, {
     usage: usage,
-    noAuthOk: true
+    noAuthOk: true,
   });
 };
