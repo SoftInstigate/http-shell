@@ -23,7 +23,14 @@ import geturl from './lib/cmds/get-url';
 import getauth from './lib/cmds/get-auth';
 import get from './lib/cmds/get';
 import post from './lib/cmds/post';
+import put from './lib/cmds/put';
+import patch from './lib/cmds/patch';
+import del from './lib/cmds/delete';
+import options from './lib/cmds/options';
+import setheader from './lib/cmds/set-header';
+import getheaders from './lib/cmds/get-headers';
 import helprestheart from './lib/cmds/help-restheart';
+import resetHeaders from './lib/cmds/reset-headers';
 import { toplevelUsage } from './lib/usage'
 
 // const debug = Debug("plugins/restheart-shell");
@@ -31,7 +38,7 @@ import { toplevelUsage } from './lib/usage'
 export default async (registrar: Registrar) => {
   const usage  = { usage: toplevelUsage.available }
 
-  Promise.all([
+  await Promise.all([
     helprestheart(registrar),
     test(registrar),
     setauth(registrar),
@@ -39,6 +46,13 @@ export default async (registrar: Registrar) => {
     geturl(registrar),
     getauth(registrar),
     get(registrar),
-    post(registrar)
+    post(registrar),
+    put(registrar),
+    patch(registrar),
+    del(registrar),
+    options(registrar),
+    setheader(registrar),
+    getheaders(registrar),
+    resetHeaders(registrar)
   ]);
 };

@@ -19,21 +19,17 @@ import {
   Arguments,
   MultiModalResponse,
 } from "@kui-shell/core";
-import { getUsage as usage } from "../usage";
+import { patchUsage as usage } from "../usage";
 
-import { get, Response } from "superagent";
-import { url } from './requests';
-import { getUsage } from  '../usage';
-import Debug from "debug";
+import { patch } from "superagent";
+import  { urlFile } from './requests';
 
-const debug = Debug("plugins/restheart-shell/get");
-
-const getCmd = async (args: Arguments): Promise<MultiModalResponse | string> => {
-  return  url(args, get, getUsage);
+const patchCmd = async (args: Arguments): Promise<MultiModalResponse | string> => {
+    return urlFile(args, patch, usage);
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/get", getCmd, {
+  registrar.listen("/patch", patchCmd, {
     usage: usage,
     noAuthOk: true,
   });
