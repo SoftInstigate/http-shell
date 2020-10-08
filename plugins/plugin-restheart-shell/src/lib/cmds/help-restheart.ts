@@ -17,6 +17,8 @@ const usage: MultiModalResponse = {
 | set url <url> | sets the base url to use in further requests | > set url http://127.0.0.1:8080 |
 | get url | prints the base url | > get url |
 | get <uri> | executes the GET request to url=<base-url>+<uri> | > get /collection |
+| edit <file> | opens <file> for editing | > edit body.json |
+| get <uri> <file> | executes the request POST <base-url>+<uri>, sending the content of <file> as the request body | > post /collection body.json |
 `,
         contentType: "text/markdown"
       }

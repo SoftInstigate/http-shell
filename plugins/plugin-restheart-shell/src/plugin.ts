@@ -22,6 +22,7 @@ import seturl from './lib/cmds/set-url';
 import geturl from './lib/cmds/get-url';
 import getauth from './lib/cmds/get-auth';
 import get from './lib/cmds/get';
+import post from './lib/cmds/post';
 import helprestheart from './lib/cmds/help-restheart';
 import { toplevelUsage } from './lib/usage'
 
@@ -38,5 +39,6 @@ export default async (registrar: Registrar) => {
     geturl(registrar),
     getauth(registrar),
     get(registrar),
+    post(registrar)
   ]);
 };

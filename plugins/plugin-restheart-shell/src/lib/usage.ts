@@ -77,6 +77,34 @@ export const getUsage: UsageModel = {
   parents: [{ command: "restheart" }]
 };
 
+export const postUsage: UsageModel = {
+  title: "post",
+  header: "executes a POST request",
+  example: "get <uri> <file>",
+  detailedExample: [
+    {
+      command: "post /coll data.json",
+      docs:
+        'executes the request POST <base-url>+<uri>, where base url is set via the command "set url" sending the content of the file data.json as the request body'
+    }
+  ],
+  required: [
+    {
+      name: "url",
+      docs: "the URI of the resource to POST",
+      file: false,
+      positional: true
+    },
+    {
+      name: "file",
+      docs: "the file containing the request body to POST",
+      file: false,
+      positional: true
+    }
+  ],
+  parents: [{ command: "restheart" }]
+};
+
 /**
  * Usage model for the restheart shell plugin
  *
@@ -92,7 +120,8 @@ export const toplevelUsage: UsageModel = {
     },
     { command: "set url", docs: "sets the base url" },
     { command: "get url", docs: "prints the base url" },
-    { command: "get", docs: "executes the GET request to url=<base-url>+<uri>" }
+    { command: "get <uri>", docs: "executes the GET request to url=<base-url>+<uri>" },
+    { command: "post <uri> <file>", docs: "executes the POST request to url=<base-url>+<uri>" }
   ]
 
   // children: { a: { route: '/set/auth', usage: setAuthUsage } }

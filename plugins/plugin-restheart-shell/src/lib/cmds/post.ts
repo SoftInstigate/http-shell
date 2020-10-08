@@ -20,24 +20,31 @@ import {
   Store,
   UsageError,
   MultiModalResponse,
+  userDataDir,
 } from "@kui-shell/core";
-import { getUsage as usage } from "../usage";
+import { postUsage as usage } from "../usage";
 
-import { get, Response } from "superagent";
+import { post, Response } from "superagent";
+import { join } from "path";
+import { readFileSync, writeFileSync } from "fs";
+
+const userData = join(userDataDir(), "restheart-shell-local-storage.json");
 
 import Debug from "debug";
 
-const debug = Debug("plugins/restheart-shell/get");
+const debug = Debug("plugins/restheart-shell/post");
 
-const getCmd = async ({
+const postCmd = async ({
   argvNoOptions: args,
   REPL,
 }: Arguments): Promise<MultiModalResponse | string> => {
-  if (!args || args.length < 2) {
+  if (!args || args.length < 3) {
     throw new UsageError({ usage: usage });
   } else {
     const uri = args[1];
     const urlPrefix = Store().getItem("url");
+
+    const file = args[2];
 
     if (!urlPrefix) {
       return 'url not set. use "set url"';
@@ -53,40 +60,42 @@ const getCmd = async ({
         ? `${urlPrefix}/${uri}`
         : `${urlPrefix}${uri}`;
 
-    return get(url)
+    let body = readFileSync(file).toString();
+
+    return post(url)
       .accept("application/json")
       .set("Content-Type", "application/json")
       .auth(Store().getItem("id"), Store().getItem("pwd"))
+      .send(body)
       .then((res: Response) => {
         debug(res);
         const ret: MultiModalResponse = {
-          metadata: { name: `🐱 GET ${url}` },
-          modes: [],
-          kind: "Response",
-        };
+            metadata: { name: `🐱 POST ${url}` },
+            kind: "Response",
+            modes: [
+              {
+                mode: "Status",
+                content: `Status: ${res.status}\n\nStatus Text: ${res['statusText']}`,
+                contentType: "text/markdown",
+              },
+            ],
+          };
 
-        if (res.body) {
+          if (res.body) {
+            ret.modes.push({
+                mode: "Body",
+                content: JSON.stringify(res.body, null, 2),
+                contentType: "json",
+              });
+          }
+
           ret.modes.push({
-            mode: "Body",
-            content: JSON.stringify(res.body, null, 2),
+            mode: "Headers",
+            content: res.headers ? JSON.stringify(res.headers, null, 2): '',
             contentType: "json",
           });
-        }
 
-        ret.modes.push(
-          {
-            mode: "Status",
-            content: `Status: ${res.status}\n\nStatus Text: ${res["statusText"]}`,
-            contentType: "text/markdown",
-          },
-          {
-            mode: "Headers",
-            content: res.headers ? JSON.stringify(res.headers, null, 2) : "",
-            contentType: "json",
-          }
-        );
-
-        return ret;
+          return ret;
       })
       .catch((error) => {
         const ret: MultiModalResponse = {
@@ -121,7 +130,7 @@ const getCmd = async ({
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/get", getCmd, {
+  registrar.listen("/post", postCmd, {
     usage: usage,
     noAuthOk: true,
   });
