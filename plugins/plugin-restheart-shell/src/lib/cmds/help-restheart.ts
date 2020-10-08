@@ -12,12 +12,12 @@ const usage: MultiModalResponse = {
         content: `
 | command | description | example
 |---|---|---|
-| set auth <id> <password> | sets the basic authentication credentials | \`> set auth admin secret\` |
-| get auth | prints the basic authentication credentials | \`> get auth\` |
-| set url | sets the base url | \`> set url http://127.0.0.1:8080\` |
-| get url | prints the base url | \`> get url\` |
-| get | executes the GET request to url=<base-url>+<uri> | \`> get /collection\` |
-        `,
+| set auth <id> <password> | sets the basic authentication credentials to use in further requests | > set auth admin secret |
+| get auth | prints the basic authentication credentials | > get auth |
+| set url <url> | sets the base url to use in further requests | > set url http://127.0.0.1:8080 |
+| get url | prints the base url | > get url |
+| get <uri> | executes the GET request to url=<base-url>+<uri> | > get /collection |
+`,
         contentType: "text/markdown"
       }
     ]

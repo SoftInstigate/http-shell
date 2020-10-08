@@ -51,6 +51,7 @@ export default function renderMain(props: KuiProps) {
   return (
     <Kui
       productName={productName}
+      prompt='>'
       splitTerminals
       lightweightTables
       {...props}

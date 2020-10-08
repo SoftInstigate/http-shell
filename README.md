@@ -26,7 +26,7 @@ $ npm run open
 As soon as the shell starts, get commands usage help with:
 
 ```
-restheart-shell> help restheart
+> help restheart
 ```
 
 ## Acknowledgments
