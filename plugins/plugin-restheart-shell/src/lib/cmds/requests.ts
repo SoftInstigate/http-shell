@@ -22,20 +22,21 @@ import {
   UsageModel,
 } from "@kui-shell/core";
 
-import { Response, ResponseError, SuperAgentRequest } from "superagent";
+import { Response, ResponseError, SuperAgentRequest, options } from "superagent";
 import { readFileSync } from "fs";
 
 import Debug from "debug";
 
-const debug = Debug("plugins/restheart-shell/write");
+const debug = Debug("plugins/restheart-shell/requests");
 
-interface WriteRequest {
+interface UrlRequest {
+  (url: string): SuperAgentRequest;
   (url: string): SuperAgentRequest;
 }
 
 export async function urlFile(
   { argvNoOptions: args }: Arguments,
-  req: WriteRequest,
+  req: UrlRequest,
   usage: UsageModel
 ): Promise<MultiModalResponse | string> {
   if (!args || args.length < 3) {
@@ -72,11 +73,22 @@ export async function urlFile(
       headers[_headers[i]["k"]] = _headers[i]["v"];
     }
 
-    return req(url)
-      .accept("application/json")
-      .set("Content-Type", "application/json")
+    if (!headers['Content-Type']) {
+      headers['Content-Type'] = 'application/json';
+    }
+
+    if (!headers['Accept']) {
+      headers['Accept'] = 'application/json';
+    }
+
+    const _req = req(url);
+
+    if (Store().getItem("id") && Store().getItem("pwd")) {
+      _req.auth(Store().getItem("id"), Store().getItem("pwd"))
+    }
+
+    return _req
       .set(headers)
-      .auth(Store().getItem("id"), Store().getItem("pwd"))
       .send(body)
       .then((res: Response) => {
         const method = res["req"]
@@ -161,7 +173,7 @@ export async function urlFile(
 
 export async function url(
   { argvNoOptions: args }: Arguments,
-  req: WriteRequest,
+  req: UrlRequest,
   usage: UsageModel
 ): Promise<MultiModalResponse | string> {
   if (!args || args.length < 2) {
@@ -193,11 +205,22 @@ export async function url(
       headers[_headers[i]["k"]] = _headers[i]["v"];
     }
 
-    return req(url)
-      .accept("application/json")
-      .set("Content-Type", "application/json")
+    if (!headers['Content-Type']) {
+      headers['Content-Type'] = 'application/json';
+    }
+
+    if (!headers['Accept']) {
+      headers['Accept'] = 'application/json';
+    }
+
+    const _req = req(url);
+
+    if (Store().getItem("id") && Store().getItem("pwd")) {
+      _req.auth(Store().getItem("id"), Store().getItem("pwd"))
+    }
+
+    return _req
       .set(headers)
-      .auth(Store().getItem("id"), Store().getItem("pwd"))
       .then((res: Response) => {
         // debug(res);
 

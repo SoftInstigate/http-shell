@@ -30,7 +30,8 @@ import options from './lib/cmds/options';
 import setheader from './lib/cmds/set-header';
 import getheaders from './lib/cmds/get-headers';
 import helprestheart from './lib/cmds/help-restheart';
-import resetHeaders from './lib/cmds/reset-headers';
+import resetheaders from './lib/cmds/reset-headers';
+import resetauth from './lib/cmds/reset-auth';
 import { toplevelUsage } from './lib/usage'
 
 // const debug = Debug("plugins/restheart-shell");
@@ -42,9 +43,10 @@ export default async (registrar: Registrar) => {
     helprestheart(registrar),
     test(registrar),
     setauth(registrar),
+    resetauth(registrar),
+    getauth(registrar),
     seturl(registrar),
     geturl(registrar),
-    getauth(registrar),
     get(registrar),
     post(registrar),
     put(registrar),
@@ -53,6 +55,6 @@ export default async (registrar: Registrar) => {
     options(registrar),
     setheader(registrar),
     getheaders(registrar),
-    resetHeaders(registrar)
+    resetheaders(registrar),
   ]);
 };
