@@ -79,9 +79,15 @@ export async function urlFile(
       .auth(Store().getItem("id"), Store().getItem("pwd"))
       .send(body)
       .then((res: Response) => {
+        const method = res["req"]
+          ? res["req"]["method"]
+            ? res["req"]["method"]
+            : ""
+          : "";
+
         // debug(res);
         const ret: MultiModalResponse = {
-          metadata: { name: `🐱 POST ${url}` },
+          metadata: { name: `🐱 ${method} ${url}` },
           kind: "Response",
           modes: [
             {
@@ -108,23 +114,28 @@ export async function urlFile(
 
         return ret;
       })
-      .catch((error) => {
+      .catch((error: ResponseError) => {
+        const method = error.response ? error.response["req"]
+          ? error.response["req"]["method"]
+            ? error.response["req"]["method"]
+            : '' : '' : '';
+
         const ret: MultiModalResponse = {
-          metadata: { name: `🐱 GET ${urlPrefix}${uri}` },
+          metadata: { name: `🔥 ${method} ${url}` },
           kind: "Error",
           modes: [
             {
               mode: "Status",
-              content: `Status: ${error.status ? error.status : -1 }\n\nStatus Text: ${error.response? error.response.statusText: 'Connection refused'}`,
+              content: `Status: ${error.status ? error.status : -1 }\n\nStatus Text: ${error.response? error.response['statusText']: 'Connection refused'}`,
               contentType: "text/markdown",
             },
           ],
         };
 
-        if (error.body) {
+        if (error['body']) {
           ret.modes.push({
             mode: "Response body",
-            content: JSON.stringify(error.body, null, 2),
+            content: JSON.stringify(error['body'], null, 2),
             contentType: "json",
           });
         }
@@ -237,7 +248,7 @@ export async function url(
           : "";
 
         const ret: MultiModalResponse = {
-          metadata: { name: `🐱 ${method} ${urlPrefix}${uri}` },
+          metadata: { name: `🔥 ${method} ${url}` },
           kind: "Error",
           modes: [
             {

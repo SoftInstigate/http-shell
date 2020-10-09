@@ -1,0 +1,376 @@
+{
+  "apiVersion": "kui-shell/v1",
+  "kind": "Notebook",
+  "metadata": {
+    "description": "RESTHeart Shell Info"
+  },
+  "spec": {
+    "splits": [
+      {
+        "uuid": "3_c57e811f-2da8-557e-a402-9f0950407675",
+        "blocks": [
+          {
+            "response": {
+              "apiVersion": "kui-shell/v1",
+              "kind": "CommentaryResponse",
+              "props": {
+                "children": "![RESTHeart](https://restheart.org/images/rh_logo_vert.png)\n\nThe RESTHeart Shell is the perfect companion for RESTHeart to execute API requests.\n\n"
+              }
+            },
+            "historyIdx": 258,
+            "cwd": "~/development/restheart-shell",
+            "command": "commentary",
+            "startEvent": {
+              "route": "/commentary",
+              "startTime": 1602238410938,
+              "command": "commentary",
+              "evaluatorOptions": {
+                "usage": {
+                  "command": "commentary",
+                  "strict": "commentary",
+                  "example": "commentary -f [<markdown file path>]",
+                  "docs": "Commentary",
+                  "optional": [
+                    {
+                      "name": "--title",
+                      "alias": "-t",
+                      "docs": "Title for the commentary"
+                    },
+                    {
+                      "name": "--file",
+                      "alias": "-f",
+                      "docs": "File that contains the texts"
+                    }
+                  ]
+                },
+                "outputOnly": true,
+                "plugin": "plugin-client-common"
+              },
+              "execType": 0,
+              "execUUID": "70f9cc74-e7ea-4899-8115-4fe4f80cf287"
+            },
+            "completeEvent": {
+              "execType": 0,
+              "completeTime": 1602238410969,
+              "command": "commentary",
+              "argvNoOptions": [
+                "commentary"
+              ],
+              "parsedOptions": {
+                "_": [
+                  "commentary"
+                ]
+              },
+              "execUUID": "70f9cc74-e7ea-4899-8115-4fe4f80cf287",
+              "cancelled": false,
+              "evaluatorOptions": {
+                "outputOnly": true,
+                "plugin": "plugin-client-common"
+              },
+              "execOptions": {
+                "type": 0,
+                "language": "it",
+                "execUUID": "70f9cc74-e7ea-4899-8115-4fe4f80cf287",
+                "history": 258,
+                "env": {}
+              },
+              "response": {
+                "apiVersion": "kui-shell/v1",
+                "kind": "CommentaryResponse",
+                "props": {
+                  "children": "## RESTHeart Shell\n\nThe RESTHeart Shell is the perfect companion of RESTHeart to execute API requests. "
+                }
+              },
+              "responseType": "ScalarResponse",
+              "historyIdx": 258
+            },
+            "isExperimental": false,
+            "isReplay": true,
+            "execUUID": "70f9cc74-e7ea-4899-8115-4fe4f80cf287",
+            "startTime": 1602238410938,
+            "prefersTerminalPresentation": false,
+            "outputOnly": true,
+            "state": "valid-response"
+          },
+          {
+            "response": {
+              "noSort": true,
+              "noEntityColors": true,
+              "header": {
+                "name": "COMPONENT",
+                "attributes": [
+                  {
+                    "value": "VERSION"
+                  }
+                ]
+              },
+              "body": [
+                {
+                  "name": "RESTHeart Shell",
+                  "outerCSS": "semi-bold",
+                  "css": "cyan-text",
+                  "attributes": [
+                    {
+                      "key": "VERSION",
+                      "value": "0.0.1"
+                    }
+                  ],
+                  "key": "COMPONENT"
+                },
+                {
+                  "name": "electron",
+                  "outerCSS": "",
+                  "css": "lighter-text",
+                  "attributes": [
+                    {
+                      "key": "VERSION",
+                      "value": "7.3.3"
+                    }
+                  ],
+                  "key": "COMPONENT"
+                },
+                {
+                  "name": "chrome",
+                  "outerCSS": "",
+                  "css": "lighter-text",
+                  "attributes": [
+                    {
+                      "key": "VERSION",
+                      "value": "78.0.3904.130"
+                    }
+                  ],
+                  "key": "COMPONENT"
+                },
+                {
+                  "name": "node",
+                  "outerCSS": "",
+                  "css": "lighter-text",
+                  "attributes": [
+                    {
+                      "key": "VERSION",
+                      "value": "12.8.1"
+                    }
+                  ],
+                  "key": "COMPONENT"
+                },
+                {
+                  "name": "v8",
+                  "outerCSS": "",
+                  "css": "lighter-text",
+                  "attributes": [
+                    {
+                      "key": "VERSION",
+                      "value": "7.8.279.23-electron.0"
+                    }
+                  ],
+                  "key": "COMPONENT"
+                }
+              ]
+            },
+            "historyIdx": 259,
+            "cwd": "~/development/restheart-shell",
+            "command": "version --full",
+            "startEvent": {
+              "route": "/version",
+              "startTime": 1602238512284,
+              "command": "version --full",
+              "evaluatorOptions": {
+                "usage": {
+                  "strict": "version",
+                  "command": "version",
+                  "title": "Informazioni sulla versione",
+                  "header": "Stampa la versione corrente",
+                  "example": "version",
+                  "optional": [
+                    {
+                      "name": "--full",
+                      "boolean": true,
+                      "docs": "Report versione completa"
+                    }
+                  ]
+                },
+                "plugin": "plugin-core-support/about"
+              },
+              "execType": 0,
+              "execUUID": "076c2be6-26d7-43e4-8fe9-f68748ebcf2e"
+            },
+            "completeEvent": {
+              "execType": 0,
+              "completeTime": 1602238512398,
+              "command": "version --full",
+              "argvNoOptions": [
+                "version"
+              ],
+              "parsedOptions": {
+                "_": [
+                  "version"
+                ],
+                "full": true
+              },
+              "execUUID": "076c2be6-26d7-43e4-8fe9-f68748ebcf2e",
+              "cancelled": false,
+              "evaluatorOptions": {
+                "plugin": "plugin-core-support/about"
+              },
+              "execOptions": {
+                "type": 0,
+                "language": "it",
+                "execUUID": "076c2be6-26d7-43e4-8fe9-f68748ebcf2e",
+                "history": 259,
+                "env": {}
+              },
+              "response": {
+                "noSort": true,
+                "noEntityColors": true,
+                "header": {
+                  "name": "COMPONENT",
+                  "attributes": [
+                    {
+                      "value": "VERSION"
+                    }
+                  ]
+                },
+                "body": [
+                  {
+                    "name": "RESTHeart Shell",
+                    "outerCSS": "semi-bold",
+                    "css": "cyan-text",
+                    "attributes": [
+                      {
+                        "key": "VERSION",
+                        "value": "0.0.1"
+                      }
+                    ],
+                    "key": "COMPONENT"
+                  },
+                  {
+                    "name": "electron",
+                    "outerCSS": "",
+                    "css": "lighter-text",
+                    "attributes": [
+                      {
+                        "key": "VERSION",
+                        "value": "7.3.3"
+                      }
+                    ],
+                    "key": "COMPONENT"
+                  },
+                  {
+                    "name": "chrome",
+                    "outerCSS": "",
+                    "css": "lighter-text",
+                    "attributes": [
+                      {
+                        "key": "VERSION",
+                        "value": "78.0.3904.130"
+                      }
+                    ],
+                    "key": "COMPONENT"
+                  },
+                  {
+                    "name": "node",
+                    "outerCSS": "",
+                    "css": "lighter-text",
+                    "attributes": [
+                      {
+                        "key": "VERSION",
+                        "value": "12.8.1"
+                      }
+                    ],
+                    "key": "COMPONENT"
+                  },
+                  {
+                    "name": "v8",
+                    "outerCSS": "",
+                    "css": "lighter-text",
+                    "attributes": [
+                      {
+                        "key": "VERSION",
+                        "value": "7.8.279.23-electron.0"
+                      }
+                    ],
+                    "key": "COMPONENT"
+                  }
+                ]
+              },
+              "responseType": "ScalarResponse",
+              "historyIdx": 259
+            },
+            "isExperimental": false,
+            "isReplay": true,
+            "execUUID": "076c2be6-26d7-43e4-8fe9-f68748ebcf2e",
+            "startTime": 1602238512284,
+            "prefersTerminalPresentation": false,
+            "outputOnly": false,
+            "state": "valid-response"
+          },
+          {
+            "response": true,
+            "historyIdx": 251,
+            "cwd": "~/development/restheart-shell",
+            "command": "help restheart",
+            "startEvent": {
+              "route": "/help/restheart",
+              "startTime": 1602238674617,
+              "command": "help restheart",
+              "evaluatorOptions": {
+                "plugin": "plugin-restheart-shell"
+              },
+              "execType": 0,
+              "execUUID": "8f31f28d-c56f-4131-b42a-d0ecc919f199"
+            },
+            "completeEvent": {
+              "execType": 0,
+              "completeTime": 1602238674736,
+              "command": "help restheart",
+              "argvNoOptions": [
+                "help",
+                "restheart"
+              ],
+              "parsedOptions": {
+                "_": [
+                  "help",
+                  "restheart"
+                ]
+              },
+              "execUUID": "8f31f28d-c56f-4131-b42a-d0ecc919f199",
+              "cancelled": false,
+              "evaluatorOptions": {
+                "plugin": "plugin-restheart-shell"
+              },
+              "execOptions": {
+                "type": 0,
+                "language": "it",
+                "execUUID": "8f31f28d-c56f-4131-b42a-d0ecc919f199",
+                "history": 251,
+                "env": {}
+              },
+              "response": {
+                "metadata": {
+                  "name": "RESTHeart Shell Help"
+                },
+                "kind": "Top",
+                "modes": [
+                  {
+                    "mode": "Available commands",
+                    "content": "\n| command | description | example\n|---|---|---|\n| set auth <id> <password> | sets the basic authentication credentials to use in further requests | > set auth admin secret |\n| get auth | prints the basic authentication credentials | > get auth |\n| set url <url> | sets the base url to use in further requests | > set url http://127.0.0.1:8080 |\n| get url | prints the base url | > get url |\n| get <uri> | executes the GET request to url=<base-url>+<uri> | > get /collection |\n| edit <file> | opens <file> for editing | > edit body.json |\n| post <uri> <file> | executes the request POST <base-url>+<uri>, sending the content of <file> as the request body | > post /collection body.json |\n| put <uri> <file> | executes the request PUT <base-url>+<uri>, sending the content of <file> as the request body | > put /collection body.json |\n| patch <uri> <file> | executes the request PATCH <base-url>+<uri>, sending the content of <file> as the request body | > patch /collection body.json |\n| delete <uri> | executes the DELETE request to url=<base-url>+<uri> | > delete /collection |\n| set header <name> <value> | set the header <name> to <value> | > set header If-Match 5f7f35efcb800f2502f95cb5 |\n| get headers | prints the current set headers | > get headers |\n| clear headers | clears the headers | > clear headers |\n\n",
+                    "contentType": "text/markdown"
+                  }
+                ]
+              },
+              "responseType": "MultiModalResponse",
+              "historyIdx": 251
+            },
+            "isExperimental": false,
+            "isReplay": true,
+            "execUUID": "8f31f28d-c56f-4131-b42a-d0ecc919f199",
+            "startTime": 1602238674617,
+            "prefersTerminalPresentation": false,
+            "outputOnly": false,
+            "state": "valid-response"
+          }
+        ]
+      }
+    ]
+  }
+}

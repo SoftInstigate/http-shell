@@ -1,0 +1,187 @@
+{
+  "apiVersion": "kui-shell/v1",
+  "kind": "Notebook",
+  "metadata": {
+    "name": "RESTHeart Shell Settings"
+  },
+  "spec": {
+    "splits": [
+      {
+        "uuid": "3_cd0d8750-9c3b-5e47-bb06-8b8fe6c85bfb",
+        "inverseColors": true,
+        "blocks": [
+          {
+            "response": {
+              "apiVersion": "kui-shell/v1",
+              "kind": "RadioTable",
+              "title": "Temi disponibili",
+              "header": {
+                "cells": [
+                  "Tema",
+                  {
+                    "value": "Stile",
+                    "hints": "hide-with-narrow-window"
+                  },
+                  {
+                    "value": "Provider",
+                    "hints": "hide-with-sidecar"
+                  }
+                ]
+              },
+              "body": [
+                {
+                  "nameIdx": 0,
+                  "cells": [
+                    "Carbon Gray10",
+                    {
+                      "value": "chiaro",
+                      "hints": "hide-with-narrow-window"
+                    },
+                    {
+                      "value": "plugin-carbon-themes",
+                      "hints": [
+                        "hide-with-sidecar",
+                        "sub-text"
+                      ]
+                    }
+                  ],
+                  "onSelect": "theme set \"Carbon Gray10\""
+                },
+                {
+                  "nameIdx": 0,
+                  "cells": [
+                    "Carbon Gray90",
+                    {
+                      "value": "scuro",
+                      "hints": "hide-with-narrow-window"
+                    },
+                    {
+                      "value": "plugin-carbon-themes",
+                      "hints": [
+                        "hide-with-sidecar",
+                        "sub-text"
+                      ]
+                    }
+                  ],
+                  "onSelect": "theme set \"Carbon Gray90\""
+                }
+              ],
+              "defaultSelectedIdx": 1
+            },
+            "historyIdx": 251,
+            "cwd": "~/Workspace7/kui",
+            "command": "themes",
+            "startEvent": {
+              "route": "/themes",
+              "startTime": 1602253704315,
+              "command": "themes",
+              "evaluatorOptions": {
+                "usage": {
+                  "command": "themes",
+                  "strict": "themes",
+                  "docs": "Elenca temi disponibili"
+                },
+                "plugin": "plugin-core-support"
+              },
+              "execType": 1,
+              "execUUID": "6866f2f4-e4b5-4321-a23e-745feb2bbb20",
+              "echo": true
+            },
+            "completeEvent": {
+              "execType": 1,
+              "completeTime": 1602253704364,
+              "command": "themes",
+              "argvNoOptions": [
+                "themes"
+              ],
+              "parsedOptions": {
+                "_": [
+                  "themes"
+                ]
+              },
+              "execUUID": "6866f2f4-e4b5-4321-a23e-745feb2bbb20",
+              "cancelled": false,
+              "echo": true,
+              "evaluatorOptions": {
+                "plugin": "plugin-core-support"
+              },
+              "execOptions": {
+                "echo": true,
+                "type": 1,
+                "execUUID": "6866f2f4-e4b5-4321-a23e-745feb2bbb20",
+                "history": 251,
+                "env": {}
+              },
+              "response": {
+                "apiVersion": "kui-shell/v1",
+                "kind": "RadioTable",
+                "title": "Temi disponibili",
+                "header": {
+                  "cells": [
+                    "Tema",
+                    {
+                      "value": "Stile",
+                      "hints": "hide-with-narrow-window"
+                    },
+                    {
+                      "value": "Provider",
+                      "hints": "hide-with-sidecar"
+                    }
+                  ]
+                },
+                "body": [
+                  {
+                    "nameIdx": 0,
+                    "cells": [
+                      "Carbon Gray10",
+                      {
+                        "value": "chiaro",
+                        "hints": "hide-with-narrow-window"
+                      },
+                      {
+                        "value": "plugin-carbon-themes",
+                        "hints": [
+                          "hide-with-sidecar",
+                          "sub-text"
+                        ]
+                      }
+                    ],
+                    "onSelect": "theme set \"Carbon Gray10\""
+                  },
+                  {
+                    "nameIdx": 0,
+                    "cells": [
+                      "Carbon Gray90",
+                      {
+                        "value": "scuro",
+                        "hints": "hide-with-narrow-window"
+                      },
+                      {
+                        "value": "plugin-carbon-themes",
+                        "hints": [
+                          "hide-with-sidecar",
+                          "sub-text"
+                        ]
+                      }
+                    ],
+                    "onSelect": "theme set \"Carbon Gray90\""
+                  }
+                ],
+                "defaultSelectedIdx": 1
+              },
+              "responseType": "ScalarResponse",
+              "historyIdx": 251
+            },
+            "isExperimental": false,
+            "isReplay": true,
+            "execUUID": "6866f2f4-e4b5-4321-a23e-745feb2bbb20",
+            "startTime": 1602253704315,
+            "prefersTerminalPresentation": false,
+            "outputOnly": false,
+            "state": "valid-response"
+          }
+        ]
+      }
+    ]
+  }
+}

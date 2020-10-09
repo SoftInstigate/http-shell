@@ -19,11 +19,11 @@
  *
  */
 export default async () => {
-  // coming soon, in kui 9.0.0
-  /* const { notebookVFS } = await import('@kui-shell/plugin-core-support')
+  const { notebookVFS } = await import('@kui-shell/plugin-core-support')
+
   notebookVFS.cp(
     undefined,
-    ['plugin://plugin-client-common/notebooks/welcome.json', 'plugin://plugin-client-common/notebooks/settings.json'],
+    ['plugin://client/notebooks/welcome.json', 'plugin://client/notebooks/settings.json'],
     '/kui'
-  ) */
+  )
 }
