@@ -115,11 +115,19 @@ export async function urlFile(
           ],
         };
 
+        const _ct = res.headers['Content-Type']
+          ? res.headers['Content-Type']
+          : res.headers['content-type']
+            ? res.headers['content-type']
+            : 'json';
+
+        const ct = _ct === 'application/json' ? 'json' : _ct;
+
         if (res.text) {
           ret.modes.push({
             mode: "Body",
-            content: res.text,
-            contentType: res.headers['Content-Type'] ? res.headers['Content-Type'] : "json",
+            content: ct === 'json' ? JSON.stringify(res.body, null, 2) : res.text,
+            contentType: ct
           });
         }
 
@@ -261,13 +269,19 @@ export async function url(
           kind: "Response",
         };
 
+        const _ct = res.headers['Content-Type']
+          ? res.headers['Content-Type']
+          : res.headers['content-type']
+            ? res.headers['content-type']
+            : 'json';
+
+        const ct = _ct === 'application/json' ? 'json' : _ct;
+
         if (res.text) {
           ret.modes.push({
             mode: "Body",
-            content: res.text,
-            contentType: res.headers["Content-Type"]
-              ? res.headers["Content-Type"]
-              : "json",
+            content: ct === 'json' ? JSON.stringify(res.body, null, 2) : res.text,
+            contentType: ct
           });
         }
 
