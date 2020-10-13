@@ -22,8 +22,9 @@ import {
   UsageModel,
 } from "@kui-shell/core";
 
-import { Response, ResponseError, SuperAgentRequest, options } from "superagent";
+import { Response, ResponseError, SuperAgentRequest } from "superagent";
 import { readFileSync } from "fs";
+const { BrowserWindow } = require('electron')
 
 import Debug from "debug";
 
@@ -90,6 +91,7 @@ export async function urlFile(
     return _req
       .set(headers)
       .send(body)
+      .on('error', (err) => { debug('error', err)})
       .then((res: Response) => {
         const method = res["req"]
           ? res["req"]["method"]
@@ -127,6 +129,9 @@ export async function urlFile(
         return ret;
       })
       .catch((error: ResponseError) => {
+        const win = new BrowserWindow()
+win.webContents.openDevTools()
+
         const method = error.response ? error.response["req"]
           ? error.response["req"]["method"]
             ? error.response["req"]["method"]
@@ -135,14 +140,24 @@ export async function urlFile(
         const ret: MultiModalResponse = {
           metadata: { name: `🔥 ${method} ${url}` },
           kind: "Error",
-          modes: [
-            {
-              mode: "Status",
-              content: `Status: ${error.status ? error.status : -1 }\n\nStatus Text: ${error.response? error.response['statusText']: 'Connection refused'}`,
-              contentType: "text/markdown",
-            },
-          ],
+          modes: [],
         };
+
+        if (error.status) {
+          ret.modes.push({
+            mode: "Status",
+            content: `Status: ${error.status }\n\nStatus Text: ${error.response ? error.response["statusText"]: ''}`,
+            contentType: "text/markdown",
+          },)
+        } else {
+          ret.modes.push({
+            mode: "Status",
+            content: 'Connection refused\n\n'+
+            'Possible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the server HTTPS certificate is invalid, etc.\n\n' +
+            'More information could be in the console log (for Mac \`Options+Command+I\`, other OS: \`Ctrl+Alt+I\`)',
+            contentType: "text/markdown",
+          },)
+        }
 
         if (error['body']) {
           ret.modes.push({
@@ -216,11 +231,12 @@ export async function url(
     const _req = req(url);
 
     if (Store().getItem("id") && Store().getItem("pwd")) {
-      _req.auth(Store().getItem("id"), Store().getItem("pwd"))
+      _req.auth(Store().getItem("id"), Store().getItem("pwd"));
     }
 
     return _req
       .set(headers)
+      .on('error', (err) => { debug('error', err)})
       .then((res: Response) => {
         // debug(res);
 
@@ -273,14 +289,24 @@ export async function url(
         const ret: MultiModalResponse = {
           metadata: { name: `🔥 ${method} ${url}` },
           kind: "Error",
-          modes: [
-            {
-              mode: "Status",
-              content: `Status: ${error.status ? error.status: -1 }\n\nStatus Text: ${error.response ? error.response["statusText"]: 'Connection Refused'}`,
-              contentType: "text/markdown",
-            },
-          ],
+          modes: [],
         };
+
+        if (error.status) {
+          ret.modes.push({
+            mode: "Status",
+            content: `Status: ${error.status }\n\nStatus Text: ${error.response ? error.response["statusText"]: ''}`,
+            contentType: "text/markdown",
+          },)
+        } else {
+          ret.modes.push({
+            mode: "Status",
+            content: 'Connection refused\n\n'+
+            'Possible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the server HTTPS certificate is invalid, etc.\n\n' +
+            'More information could be in the console log (for Mac \`Options+Command+I\`, other OS: \`Ctrl+Alt+I\`)',
+            contentType: "text/markdown",
+          },)
+        }
 
         if (error.response && error.response.body) {
           ret.modes.push({
