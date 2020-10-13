@@ -14,13 +14,28 @@
  * limitations under the License.
  */
 
-import { Registrar } from "@kui-shell/core";
-import { toplevelUsage as usage } from "./lib/usage";
+import { Arguments, Registrar, Store, UsageError } from "@kui-shell/core";
 import Debug from "debug";
+import { setAuthUsage as usage } from "../usage";
 
-const debug = Debug("plugins/restheart-shell");
+const debug = Debug("plugins/plugin-http-shell/set-auth");
+
+// const setAuth =  async
+const setAuth = ({ argvNoOptions: args }: Arguments) => {
+  debug("setAuth invoked");
+  if (!args || args.length < 4) {
+    throw new UsageError({ usage: usage });
+  } else {
+    Store().setItem("id", args[2]);
+    Store().setItem("pwd", args[3]);
+
+    return "ok";
+  }
+};
 
 export default async (registrar: Registrar) => {
-  debug("register usage handler");
-  registrar.subtree("/restheart", { usage });
+  registrar.listen("/set/auth", setAuth, {
+    usage,
+    noAuthOk: true
+  });
 };

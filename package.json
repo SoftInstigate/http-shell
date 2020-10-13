@@ -1,5 +1,5 @@
 {
-  "name": "http-cli",
+  "name": "http-shell",
   "version": "0.0.1",
   "description": "A CLI tool that provides developers a modern alternative to http clients for interacting with APIs.",
   "main": "node_modules/@kui-shell/core/dist/main/main.js",
@@ -70,7 +70,7 @@
     "@kui-shell/plugin-electron-components": "^9.0.0",
     "@kui-shell/plugin-git": "^9.0.0",
     "@kui-shell/plugin-proxy-support": "^9.0.0",
-    "@kui-shell/plugin-http-cli": "file:./plugins/plugin-http-cli",
+    "@kui-shell/plugin-http-shell": "file:./plugins/plugin-http-shell",
     "@types/superagent": "^4.1.10",
     "superagent": "^6.1.0"
   }

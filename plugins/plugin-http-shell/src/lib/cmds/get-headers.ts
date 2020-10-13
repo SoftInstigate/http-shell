@@ -14,25 +14,34 @@
  * limitations under the License.
  */
 
-import { Arguments, Registrar, Store, UsageError } from "@kui-shell/core";
+import { Registrar, Store, Table } from "@kui-shell/core";
 // import Debug from "debug";
-import { setUrlUsage as usage } from "../usage";
 
-// const debug = Debug("plugins/restheart-shell/set-url");
+// const debug = Debug("plugins/plugin-http-shell/get-auth");
 
-const setUrlCmd = async ({ argvNoOptions: args }: Arguments) => {
-  if (!args || args.length < 3) {
-    throw new UsageError({ usage: usage });
-  } else {
-    Store().setItem("url", args[2]);
+const getHeadersCmd = async () => {
+  let _headers = Store().getItem("headers");
 
-    return "ok";
+  if (!_headers) {
+    _headers = "[]";
   }
+
+  const headers = JSON.parse(_headers);
+
+  const t: Table = {
+    header: { name: "header", attributes: [{ value: "value" }] },
+    body: [],
+  };
+
+  for(var i = 0; i < headers.length; i++) {
+    t.body.push({name: headers[i]['k'], attributes: [{ value: headers[i]['v'] }]})
+  }
+
+  return t;
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/set/url", setUrlCmd, {
-    usage: usage,
-    noAuthOk: true
+  registrar.listen("/get/headers", getHeadersCmd, {
+    noAuthOk: true,
   });
 };

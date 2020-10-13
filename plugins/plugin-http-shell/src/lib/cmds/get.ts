@@ -14,28 +14,27 @@
  * limitations under the License.
  */
 
-import { Registrar, Store, Table } from "@kui-shell/core";
-// import Debug from "debug";
+import {
+  Registrar,
+  Arguments,
+  MultiModalResponse,
+} from "@kui-shell/core";
+import { getUsage as usage } from "../usage";
 
-// const debug = Debug("plugins/restheart-shell/get-auth");
+import { get, Response } from "superagent";
+import { url } from './requests';
+import { getUsage } from  '../usage';
+import Debug from "debug";
 
-const getAuthCmd = async () => {
-  const t: Table = {
-    header: { name: "property", attributes: [{ value: "value" }] },
-    body: [
-      { name: "id", attributes: [{ value: `${Store().getItem("id")}` }] },
-      {
-        name: "password",
-        attributes: [{ value: "********" }]
-      }
-    ]
-  };
+const debug = Debug("plugins/plugin-http-shell/get");
 
-  return t;
+const getCmd = async (args: Arguments): Promise<MultiModalResponse | string> => {
+  return  url(args, get, getUsage);
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/get/auth", getAuthCmd, {
-    noAuthOk: true
+  registrar.listen("/get", getCmd, {
+    usage: usage,
+    noAuthOk: true,
   });
 };

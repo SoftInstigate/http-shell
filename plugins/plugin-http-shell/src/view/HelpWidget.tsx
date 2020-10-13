@@ -34,10 +34,10 @@ export default class HelpWidget extends React.PureComponent<Props> {
         className={this.props.className}
         text={''}
         viewLevel="normal"
-        id="kui--plugin-http-cli--help-httpcli-widget"
-        title={'Get help with HTTP Cli commands'}
-        textOnclick="help httpcli"
-        iconOnclick="help httpcli"
+        id="kui--plugin-http-shell--help-widget"
+        title={'Get help with HTTP Shell commands'}
+        textOnclick="help http-shell"
+        iconOnclick="help http-shell"
       >
         <Icons icon="Info" />
       </TextWithIconWidget>

@@ -2,7 +2,7 @@
   "apiVersion": "kui-shell/v1",
   "kind": "Notebook",
   "metadata": {
-    "description": "HTTP CLI Info"
+    "description": "HTTP Shell Info"
   },
   "spec": {
     "splits": [
@@ -14,11 +14,11 @@
               "apiVersion": "kui-shell/v1",
               "kind": "CommentaryResponse",
               "props": {
-                "children": "![HTTP CLI](https://restheart.org/images/rh_logo_vert.png)\n\nHTTP CLI is the perfect companion to execute API requests.\n\n"
+                "children": "![HTTP Shell](https://restheart.org/images/rh_logo_vert.png)\n\nHTTP Shell is the perfect companion to execute API requests.\n\n"
               }
             },
             "historyIdx": 258,
-            "cwd": "~/development/restheart-shell",
+            "cwd": "~/development/http-shell",
             "command": "commentary",
             "startEvent": {
               "route": "/commentary",
@@ -78,7 +78,7 @@
                 "apiVersion": "kui-shell/v1",
                 "kind": "CommentaryResponse",
                 "props": {
-                  "children": "## HTTP Cli\n\nHTTP Cli is the perfect companion to execute API requests. "
+                  "children": "## HTTP Shell\n\nHTTP Shell is the perfect companion to execute API requests. "
                 }
               },
               "responseType": "ScalarResponse",
@@ -106,7 +106,7 @@
               },
               "body": [
                 {
-                  "name": "HTTP Cli",
+                  "name": "HTTP Shell",
                   "outerCSS": "semi-bold",
                   "css": "cyan-text",
                   "attributes": [
@@ -168,7 +168,7 @@
               ]
             },
             "historyIdx": 259,
-            "cwd": "~/development/restheart-shell",
+            "cwd": "~/development/http-shell",
             "command": "version --full",
             "startEvent": {
               "route": "/version",
@@ -232,7 +232,7 @@
                 },
                 "body": [
                   {
-                    "name": "RESTHeart Shell",
+                    "name": "HTTP Shell",
                     "outerCSS": "semi-bold",
                     "css": "cyan-text",
                     "attributes": [
@@ -307,14 +307,14 @@
           {
             "response": true,
             "historyIdx": 251,
-            "cwd": "~/development/restheart-shell",
-            "command": "help httpcli",
+            "cwd": "~/development/http-shell",
+            "command": "help http shell",
             "startEvent": {
-              "route": "/help/restheart",
+              "route": "/help/http-shell",
               "startTime": 1602238674617,
-              "command": "help httpcli",
+              "command": "help http shell",
               "evaluatorOptions": {
-                "plugin": "plugin-restheart-shell"
+                "plugin": "plugin-http-shell"
               },
               "execType": 0,
               "execUUID": "8f31f28d-c56f-4131-b42a-d0ecc919f199"
@@ -322,21 +322,21 @@
             "completeEvent": {
               "execType": 0,
               "completeTime": 1602238674736,
-              "command": "help httpcli",
+              "command": "help http shell",
               "argvNoOptions": [
                 "help",
-                "restheart"
+                "helpshell"
               ],
               "parsedOptions": {
                 "_": [
                   "help",
-                  "restheart"
+                  "helpshell"
                 ]
               },
               "execUUID": "8f31f28d-c56f-4131-b42a-d0ecc919f199",
               "cancelled": false,
               "evaluatorOptions": {
-                "plugin": "plugin-restheart-shell"
+                "plugin": "plugin-http-shell"
               },
               "execOptions": {
                 "type": 0,
@@ -347,7 +347,7 @@
               },
               "response": {
                 "metadata": {
-                  "name": "HTTP Cli Help"
+                  "name": "HTTP Shell Help"
                 },
                 "kind": "Top",
                 "modes": [

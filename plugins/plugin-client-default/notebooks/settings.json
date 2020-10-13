@@ -2,7 +2,7 @@
   "apiVersion": "kui-shell/v1",
   "kind": "Notebook",
   "metadata": {
-    "name": "HTTP CLI Settings"
+    "name": "HTTP Shell Settings"
   },
   "spec": {
     "splits": [

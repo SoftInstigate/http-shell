@@ -23,7 +23,7 @@ export const setAuthUsage: UsageModel = {
   detailedExample: [
     {
       command: "set auth admin secret",
-      docs: 'sets the default credentials for restheart user "admin"'
+      docs: 'sets the credentials for user "admin"'
     }
   ],
   required: [
@@ -36,40 +36,40 @@ export const setAuthUsage: UsageModel = {
     }
   ],
   // optional: []
-  parents: [{ command: "restheart" }]
+  parents: [{ command: "httpshell" }]
 };
 
 export const setUrlUsage: UsageModel = {
   title: "set url",
-  header: "sets the base url for restheart requests",
+  header: "sets the base url for requests",
   example: "set url <url>",
   detailedExample: [
     {
       command: "set url http://127.0.0.1:8080",
-      docs: "sets the base url for RESTHEart running on localhost port 8080"
+      docs: "sets the base url as on localhost port 8080"
     }
   ],
   required: [
-    { name: "url", docs: "the URL of RESTHeart", file: false, positional: true }
+    { name: "url", docs: "the URL of API endpoint", file: false, positional: true }
   ],
-  parents: [{ command: "restheart" }]
+  parents: [{ command: "helpshell" }]
 };
 
 export const setHeaderUsage: UsageModel = {
   title: "set header <name> <value>",
-  header: "sets the header url for restheart requests",
+  header: "sets the header for requests",
   example: "set header If-None-Match 5f7ef3816413c95851fcbcfe",
   detailedExample: [
     {
-      command: "set url http://127.0.0.1:8080",
-      docs: "sets the base url for RESTHEart running on localhost port 8080"
+      command: "set header Content-Type application/json",
+      docs: "sets the Content-Type request header"
     }
   ],
   required: [
     { name: "name", docs: "the name of the header to set", file: false, positional: true },
     { name: "value", docs: "the value of the header", file: false, positional: true }
   ],
-  parents: [{ command: "restheart" }]
+  parents: [{ command: "httpshell" }]
 };
 
 export const getHeadersUsage: UsageModel = {
@@ -84,7 +84,7 @@ export const getHeadersUsage: UsageModel = {
   ],
   required: [
   ],
-  parents: [{ command: "restheart" }]
+  parents: [{ command: "helpshell" }]
 };
 
 export const resetHeadersUsage: UsageModel = {
@@ -99,7 +99,7 @@ export const resetHeadersUsage: UsageModel = {
   ],
   required: [
   ],
-  parents: [{ command: "restheart" }]
+  parents: [{ command: "helpshell" }]
 };
 
 export const getUsage: UsageModel = {
@@ -121,7 +121,7 @@ export const getUsage: UsageModel = {
       positional: true
     }
   ],
-  parents: [{ command: "restheart" }]
+  parents: [{ command: "helpshell" }]
 };
 
 export const optionsUsage: UsageModel = {
@@ -143,7 +143,7 @@ export const optionsUsage: UsageModel = {
       positional: true
     }
   ],
-  parents: [{ command: "restheart" }]
+  parents: [{ command: "helpshell" }]
 };
 
 export const deleteUsage: UsageModel = {
@@ -165,7 +165,7 @@ export const deleteUsage: UsageModel = {
       positional: true
     }
   ],
-  parents: [{ command: "restheart" }]
+  parents: [{ command: "helpshell" }]
 };
 
 export const postUsage: UsageModel = {
@@ -193,7 +193,7 @@ export const postUsage: UsageModel = {
       positional: true
     }
   ],
-  parents: [{ command: "restheart" }]
+  parents: [{ command: "helpshell" }]
 };
 
 export const putUsage: UsageModel = {
@@ -221,7 +221,7 @@ export const putUsage: UsageModel = {
       positional: true
     }
   ],
-  parents: [{ command: "restheart" }]
+  parents: [{ command: "helpshell" }]
 };
 
 export const patchUsage: UsageModel = {
@@ -249,16 +249,16 @@ export const patchUsage: UsageModel = {
       positional: true
     }
   ],
-  parents: [{ command: "restheart" }]
+  parents: [{ command: "helpshell" }]
 };
 
 /**
- * Usage model for the HTTP Cli plugin
+ * Usage model for the HTTP Shell plugin
  *
  */
 export const toplevelUsage: UsageModel = {
-  title: "HTTP Cli",
-  header: "Commands to execute HTTP Cli requests",
+  title: "HTTP Shell",
+  header: "Commands to execute HTTP Shell requests",
   available: [
     { command: "set auth", docs: "sets the basic authentication credentials" },
     {

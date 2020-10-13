@@ -1,7 +1,7 @@
 {
-  "name": "@kui-shell/plugin-http-cli",
+  "name": "@kui-shell/plugin-http-shell",
   "version": "0.0.1",
-  "description": "HTTP Cli",
+  "description": "HTTP Shell",
   "main": "dist/index.js",
   "module": "mdist/index.js",
   "types": "mdist/index.d.ts",
@@ -10,5 +10,5 @@
   },
   "keywords": [],
   "author": "Andrea Di Cesare",
-  "license": "ISC"
+  "license": "Apache-2.0"
 }

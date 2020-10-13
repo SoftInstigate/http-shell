@@ -17,6 +17,9 @@
   },
   "keywords": [
     "restheart",
+    "http",
+    "client",
+    "api",
     "kui",
     "plugin"
   ],

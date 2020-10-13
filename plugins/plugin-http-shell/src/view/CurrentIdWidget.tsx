@@ -28,17 +28,17 @@ interface Props {
 }
 
 interface State {
-  url: string
+  id: string
 }
 
-export default class CurrentUrlWidget extends React.PureComponent<Props, State> {
-  private readonly handler = this.reportCurrentUrl.bind(this);
+export default class CurrentIdWidget extends React.PureComponent<Props, State> {
+  private readonly handler = this.reportCurrentId.bind(this);
 
   public constructor(props: Props) {
     super(props);
 
     this.state = {
-      url: Store().getItem("url") ? Store().getItem("url") : "no URL set"
+      id: Store().getItem("id") ? Store().getItem("id") : "not authenticated"
     };
   }
 
@@ -46,9 +46,9 @@ export default class CurrentUrlWidget extends React.PureComponent<Props, State> 
    * Check the current working directory
    *
    */
-  private async reportCurrentUrl() {
+  private async reportCurrentId() {
     this.setState({
-      url: Store().getItem("url") ? Store().getItem("url") : "no URL set"
+      id: Store().getItem("id") ? Store().getItem("id") : "not authenticated"
     });
   }
 
@@ -71,14 +71,14 @@ export default class CurrentUrlWidget extends React.PureComponent<Props, State> 
     return (
       <TextWithIconWidget
         className={this.props.className}
-        text={this.state.url}
+        text={this.state.id}
         viewLevel="normal"
-        id="kui--plugin-restheart-shell--current-url-widget"
-        title={'The current RESTHeart base URL'}
-        textOnclick="get url"
-        iconOnclick="get url"
+        id="kui--plugin-http-shell--current-id-widget"
+        title={'The current client id'}
+        textOnclick="get auth"
+        iconOnclick="get auth"
       >
-        <Icons icon="Server" />
+        <Icons icon="At" />
       </TextWithIconWidget>
     );
   }

@@ -1,8 +1,8 @@
-# HTTP CLI
+# HTTP Shell
 
-**HTTP Cli** is a tool that provides developers a modern alternative to http clients for interacting with APIs.
+**HTTP Shell** is a tool that provides developers a modern alternative to http clients for interacting with APIs.
 
-![HTTP CliImage](./plugins/plugin-client-default/images/httpcliImage.png)
+![HTTP Shell Image](./plugins/plugin-client-default/images/httpshellImage.png)
 
 ## Usage
 
@@ -97,7 +97,7 @@ npx kui-build-webpack
 As soon as the shell starts, get commands usage help with:
 
 ```
-> help httpcli
+> help http-shell
 ```
 
 ## Acknowledgments
@@ -106,6 +106,6 @@ Project derived from [AnimalApp Kui skeleton project](https://github.com/IBM/kui
 
 ## Contribute
 
-[GitHub](https://github.com/softinstigate/http-cli "HTTP Cli's GitHub page")
+[GitHub](https://github.com/softinstigate/http-shell "HTTP Shell's GitHub page")
 
-[Bugs](https://github.com/softinstigate/http-cli/issues/new "HTTP Cli's bug reporting page")
+[Bugs](https://github.com/softinstigate/http-shell/issues/new "HTTP Shell's bug reporting page")

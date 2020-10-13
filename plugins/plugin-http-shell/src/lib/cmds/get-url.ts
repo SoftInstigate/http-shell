@@ -17,7 +17,7 @@
 import { Registrar, Store, Table } from "@kui-shell/core";
 // import Debug from "debug";
 
-// const debug = Debug("plugins/restheart-shell/get-url");
+// const debug = Debug("plugins/plugin-http-shell/get-url");
 
 const getUrl = () => {
   const t: Table = {

@@ -28,7 +28,7 @@ const { BrowserWindow } = require("electron");
 
 import Debug from "debug";
 
-const debug = Debug("plugins/restheart-shell/requests");
+const debug = Debug("plugins/plugin-http-shell/requests");
 
 interface UrlRequest {
   (url: string): SuperAgentRequest;

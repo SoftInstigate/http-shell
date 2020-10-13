@@ -17,10 +17,10 @@
  import { Registrar, MultiModalResponse } from "@kui-shell/core";
 // import Debug from "debug";
 
-// const debug = Debug("plugins/restheart-shell/test");
+// const debug = Debug("plugins/plugin-http-shell/test");
 
 const usage: MultiModalResponse = {
-    metadata: { name: "HTTP Cli Help" },
+    metadata: { name: "HTTP Shell Help" },
     kind: "Top",
     modes: [
       {
@@ -49,5 +49,5 @@ const usage: MultiModalResponse = {
   };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/help/httpcli", () => usage);
+  registrar.listen("/help/http-shell", () => usage);
 };

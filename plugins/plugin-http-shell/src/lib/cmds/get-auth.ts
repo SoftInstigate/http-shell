@@ -17,31 +17,25 @@
 import { Registrar, Store, Table } from "@kui-shell/core";
 // import Debug from "debug";
 
-// const debug = Debug("plugins/restheart-shell/get-auth");
+// const debug = Debug("plugins/helps-shell/get-auth");
 
-const getHeadersCmd = async () => {
-  let _headers = Store().getItem("headers");
-
-  if (!_headers) {
-    _headers = "[]";
-  }
-
-  const headers = JSON.parse(_headers);
-
+const getAuthCmd = async () => {
   const t: Table = {
-    header: { name: "header", attributes: [{ value: "value" }] },
-    body: [],
+    header: { name: "property", attributes: [{ value: "value" }] },
+    body: [
+      { name: "id", attributes: [{ value: `${Store().getItem("id")}` }] },
+      {
+        name: "password",
+        attributes: [{ value: "********" }]
+      }
+    ]
   };
-
-  for(var i = 0; i < headers.length; i++) {
-    t.body.push({name: headers[i]['k'], attributes: [{ value: headers[i]['v'] }]})
-  }
 
   return t;
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/get/headers", getHeadersCmd, {
-    noAuthOk: true,
+  registrar.listen("/get/auth", getAuthCmd, {
+    noAuthOk: true
   });
 };

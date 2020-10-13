@@ -27,20 +27,20 @@ import del from './lib/cmds/delete';
 import options from './lib/cmds/options';
 import setheader from './lib/cmds/set-header';
 import getheaders from './lib/cmds/get-headers';
-import helprestheart from './lib/cmds/help-httpcli';
+import helpshell from './lib/cmds/help-http-shell';
 import resetheaders from './lib/cmds/reset-headers';
 import resetauth from './lib/cmds/reset-auth';
 import { toplevelUsage } from './lib/usage'
 
 // import Debug from "debug";
 
-// const debug = Debug("plugins/restheart-shell");
+// const debug = Debug("plugins/plugin-http-shell");
 
 export default async (registrar: Registrar) => {
   const usage  = { usage: toplevelUsage.available }
 
   await Promise.all([
-    helprestheart(registrar),
+    helpshell(registrar),
     setauth(registrar),
     resetauth(registrar),
     getauth(registrar),

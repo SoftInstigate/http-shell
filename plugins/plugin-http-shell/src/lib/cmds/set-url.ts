@@ -14,27 +14,25 @@
  * limitations under the License.
  */
 
-import {
-  Registrar,
-  Arguments,
-  MultiModalResponse,
-} from "@kui-shell/core";
-import { getUsage as usage } from "../usage";
+import { Arguments, Registrar, Store, UsageError } from "@kui-shell/core";
+// import Debug from "debug";
+import { setUrlUsage as usage } from "../usage";
 
-import { get, Response } from "superagent";
-import { url } from './requests';
-import { getUsage } from  '../usage';
-import Debug from "debug";
+// const debug = Debug("plugins/plugin-http-shell/set-url");
 
-const debug = Debug("plugins/restheart-shell/get");
+const setUrlCmd = async ({ argvNoOptions: args }: Arguments) => {
+  if (!args || args.length < 3) {
+    throw new UsageError({ usage: usage });
+  } else {
+    Store().setItem("url", args[2]);
 
-const getCmd = async (args: Arguments): Promise<MultiModalResponse | string> => {
-  return  url(args, get, getUsage);
+    return "ok";
+  }
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/get", getCmd, {
+  registrar.listen("/set/url", setUrlCmd, {
     usage: usage,
-    noAuthOk: true,
+    noAuthOk: true
   });
 };
