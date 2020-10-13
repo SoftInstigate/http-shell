@@ -14,7 +14,7 @@
               "apiVersion": "kui-shell/v1",
               "kind": "CommentaryResponse",
               "props": {
-                "children": "![HTTP Shell](https://restheart.org/images/rh_logo_vert.png)\n\nHTTP Shell is the perfect companion to execute API requests.\n\n"
+                "children": "![HTTP Shell](https://softinstigate.com/images/softinstigate-logo-sm.png)\n\nHTTP Shell is the perfect companion to execute API requests.\n\nMade with 🍔 by [SoftInstigate](https://softinstigate.com)"
               }
             },
             "historyIdx": 258,
