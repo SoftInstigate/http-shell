@@ -24,7 +24,7 @@ import {
 
 import { Response, ResponseError, SuperAgentRequest } from "superagent";
 import { readFileSync } from "fs";
-const { BrowserWindow } = require('electron')
+const { BrowserWindow } = require("electron");
 
 import Debug from "debug";
 
@@ -74,24 +74,26 @@ export async function urlFile(
       headers[_headers[i]["k"]] = _headers[i]["v"];
     }
 
-    if (!headers['Content-Type']) {
-      headers['Content-Type'] = 'application/json';
+    if (!headers["Content-Type"]) {
+      headers["Content-Type"] = "application/json";
     }
 
-    if (!headers['Accept']) {
-      headers['Accept'] = 'application/json';
+    if (!headers["Accept"]) {
+      headers["Accept"] = "application/json";
     }
 
     const _req = req(url);
 
     if (Store().getItem("id") && Store().getItem("pwd")) {
-      _req.auth(Store().getItem("id"), Store().getItem("pwd"))
+      _req.auth(Store().getItem("id"), Store().getItem("pwd"));
     }
 
     return _req
       .set(headers)
       .send(body)
-      .on('error', (err) => { debug('error', err)})
+      .on("error", (err) => {
+        debug("error", err);
+      })
       .then((res: Response) => {
         const method = res["req"]
           ? res["req"]["method"]
@@ -99,24 +101,25 @@ export async function urlFile(
             : ""
           : "";
 
-        // debug(res);
+        //debug(res);
+
         const ret: MultiModalResponse = {
           metadata: { name: `🐱 ${method} ${url}` },
           kind: "Response",
           modes: [
             {
               mode: "Status",
-              content: `Status: ${res.status}\n\nStatus Text: ${res["statusText"]}`,
+              content: `Status: ${res.status}\n\nStatus Text: ${res['statusText']}`,
               contentType: "text/markdown",
             },
           ],
         };
 
-        if (res.body) {
+        if (res.text) {
           ret.modes.push({
             mode: "Body",
-            content: JSON.stringify(res.body, null, 2),
-            contentType: "json",
+            content: res.text,
+            contentType: res.headers['Content-Type'] ? res.headers['Content-Type'] : "json",
           });
         }
 
@@ -129,13 +132,16 @@ export async function urlFile(
         return ret;
       })
       .catch((error: ResponseError) => {
-        const win = new BrowserWindow()
-win.webContents.openDevTools()
+        const win = new BrowserWindow();
+        win.webContents.openDevTools();
 
-        const method = error.response ? error.response["req"]
-          ? error.response["req"]["method"]
+        const method = error.response
+          ? error.response["req"]
             ? error.response["req"]["method"]
-            : '' : '' : '';
+              ? error.response["req"]["method"]
+              : ""
+            : ""
+          : "";
 
         const ret: MultiModalResponse = {
           metadata: { name: `🔥 ${method} ${url}` },
@@ -146,23 +152,24 @@ win.webContents.openDevTools()
         if (error.status) {
           ret.modes.push({
             mode: "Status",
-            content: `Status: ${error.status }\n\nStatus Text: ${error.response ? error.response["statusText"]: ''}`,
+            content: `Status: ${error.status}\n\nStatus Text: ${error.response ? error.response['statusText'] : ''}`,
             contentType: "text/markdown",
-          },)
+          });
         } else {
           ret.modes.push({
             mode: "Status",
-            content: 'Connection refused\n\n'+
-            'Possible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the server HTTPS certificate is invalid, etc.\n\n' +
-            'More information could be in the console log (for Mac \`Options+Command+I\`, other OS: \`Ctrl+Alt+I\`)',
+            content:
+              "Connection refused\n\n" +
+              "Possible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the server HTTPS certificate is invalid, etc.\n\n" +
+              "More information could be in the console log (for Mac `Options+Command+I`, other OS: `Ctrl+Alt+I`)",
             contentType: "text/markdown",
-          },)
+          });
         }
 
-        if (error['body']) {
+        if (error["body"]) {
           ret.modes.push({
             mode: "Response body",
-            content: JSON.stringify(error['body'], null, 2),
+            content: JSON.stringify(error["body"], null, 2),
             contentType: "json",
           });
         }
@@ -220,12 +227,12 @@ export async function url(
       headers[_headers[i]["k"]] = _headers[i]["v"];
     }
 
-    if (!headers['Content-Type']) {
-      headers['Content-Type'] = 'application/json';
+    if (!headers["Content-Type"]) {
+      headers["Content-Type"] = "application/json";
     }
 
-    if (!headers['Accept']) {
-      headers['Accept'] = 'application/json';
+    if (!headers["Accept"]) {
+      headers["Accept"] = "application/json";
     }
 
     const _req = req(url);
@@ -236,9 +243,11 @@ export async function url(
 
     return _req
       .set(headers)
-      .on('error', (err) => { debug('error', err)})
+      .on("error", (err) => {
+        debug("error", err);
+      })
       .then((res: Response) => {
-        // debug(res);
+        debug(res);
 
         const method = res["req"]
           ? res["req"]["method"]
@@ -252,11 +261,13 @@ export async function url(
           kind: "Response",
         };
 
-        if (res.body) {
+        if (res.text) {
           ret.modes.push({
             mode: "Body",
-            content: JSON.stringify(res.body, null, 2),
-            contentType: "json",
+            content: res.text,
+            contentType: res.headers["Content-Type"]
+              ? res.headers["Content-Type"]
+              : "json",
           });
         }
 
@@ -295,17 +306,18 @@ export async function url(
         if (error.status) {
           ret.modes.push({
             mode: "Status",
-            content: `Status: ${error.status }\n\nStatus Text: ${error.response ? error.response["statusText"]: ''}`,
+            content: `Status: ${error.status}\n\nStatus Text: ${error.response ? error.response['statusText'] : ''}`,
             contentType: "text/markdown",
-          },)
+          });
         } else {
           ret.modes.push({
             mode: "Status",
-            content: 'Connection refused\n\n'+
-            'Possible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the server HTTPS certificate is invalid, etc.\n\n' +
-            'More information could be in the console log (for Mac \`Options+Command+I\`, other OS: \`Ctrl+Alt+I\`)',
+            content:
+              "Connection refused\n\n" +
+              "Possible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the server HTTPS certificate is invalid, etc.\n\n" +
+              "More information could be in the console log (for Mac `Options+Command+I`, other OS: `Ctrl+Alt+I`)",
             contentType: "text/markdown",
-          },)
+          });
         }
 
         if (error.response && error.response.body) {
