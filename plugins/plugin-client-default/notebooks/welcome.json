@@ -308,11 +308,11 @@
             "response": true,
             "historyIdx": 251,
             "cwd": "~/development/restheart-shell",
-            "command": "help restheart",
+            "command": "help httpcli",
             "startEvent": {
               "route": "/help/restheart",
               "startTime": 1602238674617,
-              "command": "help restheart",
+              "command": "help httpcli",
               "evaluatorOptions": {
                 "plugin": "plugin-restheart-shell"
               },
@@ -322,7 +322,7 @@
             "completeEvent": {
               "execType": 0,
               "completeTime": 1602238674736,
-              "command": "help restheart",
+              "command": "help httpcli",
               "argvNoOptions": [
                 "help",
                 "restheart"

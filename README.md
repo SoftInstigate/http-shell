@@ -2,11 +2,7 @@
 
 **HTTP Cli** is a tool that provides developers a modern alternative to http clients for interacting with APIs.
 
-![HTTP CliImage](./plugins/plugin-client-default/images/rhsImage.png)
-
-## Alpha stage
-
-Note: this project is at alpha stage. Heavy work in progress!
+![HTTP CliImage](./plugins/plugin-client-default/images/httpcliImage.png)
 
 ## Usage
 
