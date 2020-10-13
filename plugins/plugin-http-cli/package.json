@@ -1,7 +1,7 @@
 {
-  "name": "@kui-shell/plugin-restheart-shell",
+  "name": "@kui-shell/plugin-http-cli",
   "version": "0.0.1",
-  "description": "RESTHeart Shell",
+  "description": "HTTP Cli",
   "main": "dist/index.js",
   "module": "mdist/index.js",
   "types": "mdist/index.d.ts",

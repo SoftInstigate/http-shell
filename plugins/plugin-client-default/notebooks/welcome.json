@@ -2,7 +2,7 @@
   "apiVersion": "kui-shell/v1",
   "kind": "Notebook",
   "metadata": {
-    "description": "RESTHeart Shell Info"
+    "description": "HTTP CLI Info"
   },
   "spec": {
     "splits": [
@@ -14,7 +14,7 @@
               "apiVersion": "kui-shell/v1",
               "kind": "CommentaryResponse",
               "props": {
-                "children": "![RESTHeart](https://restheart.org/images/rh_logo_vert.png)\n\nThe RESTHeart Shell is the perfect companion for RESTHeart to execute API requests.\n\n"
+                "children": "![HTTP CLI](https://restheart.org/images/rh_logo_vert.png)\n\nHTTP CLI is the perfect companion to execute API requests.\n\n"
               }
             },
             "historyIdx": 258,
@@ -78,7 +78,7 @@
                 "apiVersion": "kui-shell/v1",
                 "kind": "CommentaryResponse",
                 "props": {
-                  "children": "## RESTHeart Shell\n\nThe RESTHeart Shell is the perfect companion of RESTHeart to execute API requests. "
+                  "children": "## HTTP Cli\n\nHTTP Cli is the perfect companion to execute API requests. "
                 }
               },
               "responseType": "ScalarResponse",
@@ -106,7 +106,7 @@
               },
               "body": [
                 {
-                  "name": "RESTHeart Shell",
+                  "name": "HTTP Cli",
                   "outerCSS": "semi-bold",
                   "css": "cyan-text",
                   "attributes": [
@@ -347,7 +347,7 @@
               },
               "response": {
                 "metadata": {
-                  "name": "RESTHeart Shell Help"
+                  "name": "HTTP Cli Help"
                 },
                 "kind": "Top",
                 "modes": [

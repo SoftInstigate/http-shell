@@ -253,12 +253,12 @@ export const patchUsage: UsageModel = {
 };
 
 /**
- * Usage model for the restheart shell plugin
+ * Usage model for the HTTP Cli plugin
  *
  */
 export const toplevelUsage: UsageModel = {
-  title: "restheart",
-  header: "Commands to execute RESTHeart API requests",
+  title: "HTTP Cli",
+  header: "Commands to execute HTTP Cli requests",
   available: [
     { command: "set auth", docs: "sets the basic authentication credentials" },
     {

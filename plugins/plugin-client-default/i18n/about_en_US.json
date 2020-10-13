@@ -1,6 +1,6 @@
 {
   "about": "About",
-  "about:content": "[![RESTHeart Shell: The CLI for RESTHeart](https://restheart.org/images/rh_logo_vert.png)](http://restheart.org)\n\n**RESTHeart Shell** is a CLI tool that provides developers a modern alternative to http clients for interacting with RESTHeart.",
+  "about:content": "[![HTTP CLI: The CLI tool for API](https://restheart.org/images/rh_logo_vert.png)](http://restheart.org)\n\n**HTTP CLI** is a tool that provides developers a modern alternative to http clients for interacting with APIs.",
   "theme": "Themes",
   "Configure": "Configure",
   "tutorial": "Getting Started",

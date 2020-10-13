@@ -13,7 +13,7 @@
     }
   ],
   "links": [
-    { "label": "Github", "href": "https://github.com/softinstigate/restheart-shell" },
-    { "label": "Bugs", "href": "https://github.com/softinstigate/restheart-shell/issues/new" }
+    { "label": "Github", "href": "https://github.com/softinstigate/http-cli" },
+    { "label": "Bugs", "href": "https://github.com/softinstigate/http-cli/issues/new" }
   ]
 }

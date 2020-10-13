@@ -15,8 +15,6 @@
  */
 
 import { Registrar } from '@kui-shell/core';
-// import Debug from "debug";
-import test from './lib/cmds/test';
 import setauth from './lib/cmds/set-auth';
 import seturl from './lib/cmds/set-url';
 import geturl from './lib/cmds/get-url';
@@ -29,10 +27,12 @@ import del from './lib/cmds/delete';
 import options from './lib/cmds/options';
 import setheader from './lib/cmds/set-header';
 import getheaders from './lib/cmds/get-headers';
-import helprestheart from './lib/cmds/help-restheart';
+import helprestheart from './lib/cmds/help-httpcli';
 import resetheaders from './lib/cmds/reset-headers';
 import resetauth from './lib/cmds/reset-auth';
 import { toplevelUsage } from './lib/usage'
+
+// import Debug from "debug";
 
 // const debug = Debug("plugins/restheart-shell");
 
@@ -41,7 +41,6 @@ export default async (registrar: Registrar) => {
 
   await Promise.all([
     helprestheart(registrar),
-    test(registrar),
     setauth(registrar),
     resetauth(registrar),
     getauth(registrar),

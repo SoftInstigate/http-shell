@@ -1,14 +1,55 @@
-# RESTHeart Shell
+# HTTP CLI
 
-**RESTHeart Shell** is a CLI tool that provides developers a modern alternative to http clients for interacting with RESTHeart.
+**HTTP Cli** is a tool that provides developers a modern alternative to http clients for interacting with APIs.
 
-![RESTHeart Shell Image](./plugins/plugin-client-default/images/rhsImage.png)
+![HTTP CliImage](./plugins/plugin-client-default/images/rhsImage.png)
 
 ## Alpha stage
 
 Note: this project is at alpha stage. Heavy work in progress!
 
 ## Usage
+
+### typical usage
+
+```
+$ set url http://127.0.0.1:8080
+
+$ set auth id secret
+
+$ edit message.json
+
+$ put messages/1 message.json
+
+$ get messages/1
+```
+
+With `set url` and `set auth` we set the *base url* and the *basic authentication* credentials  to use in further requests. 
+
+The following `put` and `get` commands with `id:secret` credentials against the URL `http://127.0.0.1:8080/messages/1`, i.e. base URL plus the specified resource URI.
+
+### commands
+
+| command | description | example
+|---|---|---|
+| set auth <id> <password> | sets the basic authentication credentials to use in further requests | > set auth admin secret |
+| get auth | prints the basic authentication credentials | > get auth |
+| reset auth | clear the basic authentication credentials | > reset auth |
+| set url <url> | sets the base url to use in further requests | > set url http://127.0.0.1:8080 |
+| get url | prints the base url | > get url |
+| get <uri> | executes the GET request to url=<base-url>+<uri> | > get /collection |
+| edit <file> | opens <file> for editing | > edit body.json |
+| post <uri> <file> | executes the request POST <base-url>+<uri>, sending the content of <file> as the request body | > post /collection body.json |
+| put <uri> <file> | executes the request PUT <base-url>+<uri>, sending the content of <file> as the request body | > put /collection body.json |
+| patch <uri> <file> | executes the request PATCH <base-url>+<uri>, sending the content of <file> as the request body | > patch /collection body.json |
+| delete <uri> | executes the DELETE request to url=<base-url>+<uri> | > delete /collection |
+| set header <name> <value> | set the header <name> to <value> | > set header If-Match 5f7f35efcb800f2502f95cb5 |
+| get headers | prints the current set headers | > get headers |
+| clear headers | clears the headers | > clear headers |
+
+
+
+## Build from source
 
 First step:
 
@@ -60,7 +101,7 @@ npx kui-build-webpack
 As soon as the shell starts, get commands usage help with:
 
 ```
-> help restheart
+> help httpcli
 ```
 
 ## Acknowledgments
@@ -69,6 +110,6 @@ Project derived from [AnimalApp Kui skeleton project](https://github.com/IBM/kui
 
 ## Contribute
 
-[GitHub](https://github.com/softinstigate/restheart-shell "RESTHeart Shell's GitHub page")
+[GitHub](https://github.com/softinstigate/http-cli "HTTP Cli's GitHub page")
 
-[Bugs](https://github.com/softinstigate/restheart-shell/issues/new "RESTHeart Shell's bug reporting page")
+[Bugs](https://github.com/softinstigate/http-cli/issues/new "HTTP Cli's bug reporting page")

@@ -35,7 +35,7 @@ export default class HelpWidget extends React.PureComponent<Props> {
         text={''}
         viewLevel="normal"
         id="kui--plugin-restheart-shell--help-restheart-widget"
-        title={'Get help with RESTHeart Shell commands'}
+        title={'Get help with HTTP Cli commands'}
         textOnclick="help restheart"
         iconOnclick="help restheart"
       >

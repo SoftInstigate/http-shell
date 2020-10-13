@@ -1,11 +1,11 @@
 {
-  "ogSiteName": "RESTHeart Shell",
-  "ogTitle": "RESTHeart Shell: The CLI for RESTHeart",
-  "ogUrl": "http://github.com/softinstigate/restheart-shell",
-  "ogDescription": "ESTHeart Shell is a CLI tool that provides developers a modern alternative to http clients for interacting with RESTHeart.",
+  "ogSiteName": "HTTP CLI",
+  "ogTitle": "HTTP CLI: The CLI for APIs",
+  "ogUrl": "http://github.com/softinstigate/http-cli",
+  "ogDescription": "HTTP CLI is a tool that provides developers a modern alternative to http clients for interacting with APIs.",
   "ogImage": "https://restheart.org/images/rh_logo_vert.png",
-  "ogLabel1": "Clone RESTHeart Shell on GitHub",
-  "ogData1": "https://github.com/softinstigate/restheart-shell",
+  "ogLabel1": "Clone HTTP CLI on GitHub",
+  "ogData1": "https://github.com/softinstigate/http-cli",
   "ogLabel2": "Clone RESTHeart on GitHub",
   "ogData2": "https://github.com/softinstigate/restheart"
 }

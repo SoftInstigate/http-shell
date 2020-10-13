@@ -25,7 +25,7 @@ import { Screenshot, Search } from '@kui-shell/plugin-electron-components'
 
 import { productName } from '@kui-shell/client/config.d/name.json'
 
-import { CurrentUrlWidget, CurrentIdWidget, HelpWidget } from '@kui-shell/plugin-restheart-shell'
+import { CurrentUrlWidget, CurrentIdWidget, HelpWidget } from '@kui-shell/plugin-http-cli'
 
 const strings = i18n('plugin-client-default')
 

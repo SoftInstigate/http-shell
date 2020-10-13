@@ -1,7 +1,7 @@
 {
-  "name": "restheart-shell",
+  "name": "http-cli",
   "version": "0.0.1",
-  "description": "A CLI tool that provides developers a modern alternative to http clients for interacting with RESTHeart.",
+  "description": "A CLI tool that provides developers a modern alternative to http clients for interacting with APIs.",
   "main": "node_modules/@kui-shell/core/dist/main/main.js",
   "scripts": {
     "watch:source": "tsc --build . --watch",
@@ -70,7 +70,7 @@
     "@kui-shell/plugin-electron-components": "^9.0.0",
     "@kui-shell/plugin-git": "^9.0.0",
     "@kui-shell/plugin-proxy-support": "^9.0.0",
-    "@kui-shell/plugin-restheart-shell": "file:./plugins/plugin-restheart-shell",
+    "@kui-shell/plugin-http-cli": "file:./plugins/plugin-http-cli",
     "@types/superagent": "^4.1.10",
     "superagent": "^6.1.0"
   }
