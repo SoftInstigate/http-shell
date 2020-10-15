@@ -28,8 +28,7 @@ The following `put` and `get` commands with `id:secret` credentials against the 
 
 | command | description | example
 |---|---|---|
-| set auth <id> <password> | sets the basic authentication credentials to use in further requests | > set auth admin secret |
-| get auth | prints the basic authentication credentials | > get auth |
+| set auth <id> <password> | opens a dialog to sets the basic authentication credentials to use in further requests | > set auth |
 | reset auth | clear the basic authentication credentials | > reset auth |
 | set url <url> | sets the base url to use in further requests | > set url http://127.0.0.1:8080 |
 | get url | prints the base url | > get url |
