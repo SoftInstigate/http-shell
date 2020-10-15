@@ -11,13 +11,13 @@
 ```
 $ set url http://127.0.0.1:8080
 
-$ set auth id secret
+$ set auth
 
-$ edit message.json
+$ edit /tmp/message.json
 
-$ put messages/1 message.json
+$ put messages/foo /tmp/message.json
 
-$ get messages/1
+$ get messages/foo
 ```
 
 With `set url` and `set auth` we set the *base url* and the *basic authentication* credentials  to use in further requests. 
