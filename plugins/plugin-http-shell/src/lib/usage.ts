@@ -36,7 +36,6 @@ export const setAuthUsage: UsageModel = {
     }
   ],
   // optional: []
-  parents: [{ command: "https-hell" }]
 };
 
 export const setUrlUsage: UsageModel = {
@@ -51,8 +50,7 @@ export const setUrlUsage: UsageModel = {
   ],
   required: [
     { name: "url", docs: "the URL of API endpoint", file: false, positional: true }
-  ],
-  parents: [{ command: "help-shell" }]
+  ]
 };
 
 export const setHeaderUsage: UsageModel = {
@@ -68,8 +66,7 @@ export const setHeaderUsage: UsageModel = {
   required: [
     { name: "name", docs: "the name of the header to set", file: false, positional: true },
     { name: "value", docs: "the value of the header", file: false, positional: true }
-  ],
-  parents: [{ command: "http-shell" }]
+  ]
 };
 
 export const getHeadersUsage: UsageModel = {
@@ -83,8 +80,7 @@ export const getHeadersUsage: UsageModel = {
     }
   ],
   required: [
-  ],
-  parents: [{ command: "helpshell" }]
+  ]
 };
 
 export const resetHeadersUsage: UsageModel = {
@@ -98,8 +94,7 @@ export const resetHeadersUsage: UsageModel = {
     }
   ],
   required: [
-  ],
-  parents: [{ command: "http-shell" }]
+  ]
 };
 
 export const getUsage: UsageModel = {
@@ -120,8 +115,7 @@ export const getUsage: UsageModel = {
       file: false,
       positional: true
     }
-  ],
-  parents: [{ command: "http-shell" }]
+  ]
 };
 
 export const optionsUsage: UsageModel = {
@@ -142,8 +136,7 @@ export const optionsUsage: UsageModel = {
       file: false,
       positional: true
     }
-  ],
-  parents: [{ command: "http-shell" }]
+  ]
 };
 
 export const deleteUsage: UsageModel = {
@@ -164,8 +157,7 @@ export const deleteUsage: UsageModel = {
       file: false,
       positional: true
     }
-  ],
-  parents: [{ command: "http-shell" }]
+  ]
 };
 
 export const postUsage: UsageModel = {
@@ -192,8 +184,7 @@ export const postUsage: UsageModel = {
       file: false,
       positional: true
     }
-  ],
-  parents: [{ command: "http-shell" }]
+  ]
 };
 
 export const putUsage: UsageModel = {
@@ -220,8 +211,7 @@ export const putUsage: UsageModel = {
       file: false,
       positional: true
     }
-  ],
-  parents: [{ command: "http-shell" }]
+  ]
 };
 
 export const patchUsage: UsageModel = {
@@ -248,8 +238,7 @@ export const patchUsage: UsageModel = {
       file: false,
       positional: true
     }
-  ],
-  parents: [{ command: "http-shell" }]
+  ]
 };
 
 /**
@@ -275,7 +264,7 @@ export const toplevelUsage: UsageModel = {
 };
 
 export function errorMsg(model: UsageModel): string {
-    return `      ${model.header} 
+    return `      ${model.header}
       usage: ${model.title}
       example:
       > ${model.detailedExample[0].command}

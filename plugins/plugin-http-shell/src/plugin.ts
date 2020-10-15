@@ -31,6 +31,7 @@ import helpshell from './lib/cmds/help-http-shell';
 import resetheaders from './lib/cmds/reset-headers';
 import resetauth from './lib/cmds/reset-auth';
 import { toplevelUsage } from './lib/usage'
+// import help from './lib/cmds/help';
 
 // import Debug from "debug";
 
@@ -38,6 +39,7 @@ import { toplevelUsage } from './lib/usage'
 
 export default async (registrar: Registrar) => {
   await Promise.all([
+    // help(registrar, {usage: toplevelUsage} ),
     helpshell(registrar),
     setauth(registrar),
     resetauth(registrar),

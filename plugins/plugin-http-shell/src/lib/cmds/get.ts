@@ -19,17 +19,16 @@ import {
   Arguments,
   MultiModalResponse,
 } from "@kui-shell/core";
-import { getUsage as usage } from "../usage";
 
-import { get, Response } from "superagent";
+import { get } from "superagent";
 import { url } from './requests';
-import { getUsage } from  '../usage';
-import Debug from "debug";
+import { getUsage as usage } from  '../usage';
 
-const debug = Debug("plugins/plugin-http-shell/get");
+// import Debug from "debug";
+// const debug = Debug("plugins/plugin-http-shell/get");
 
 const getCmd = async (args: Arguments): Promise<MultiModalResponse | string> => {
-  return  url(args, get, getUsage);
+  return url(args, get, usage);
 };
 
 export default async (registrar: Registrar) => {

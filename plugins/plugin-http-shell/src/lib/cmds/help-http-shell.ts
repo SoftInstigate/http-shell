@@ -15,11 +15,12 @@
  */
 
  import { Registrar, MultiModalResponse } from "@kui-shell/core";
+ import { toplevelUsage as usage } from '../usage'
 // import Debug from "debug";
 
 // const debug = Debug("plugins/plugin-http-shell/test");
 
-const usage: MultiModalResponse = {
+const resp: MultiModalResponse = {
     metadata: { name: "HTTP Shell Help" },
     kind: "Top",
     modes: [
@@ -49,5 +50,5 @@ const usage: MultiModalResponse = {
   };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/help/http-shell", () => usage);
+  registrar.listen("/help/http-shell", () => resp, { usage: usage });
 };

@@ -13,14 +13,3 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import { Registrar } from "@kui-shell/core";
-import { toplevelUsage as usage } from "./lib/usage";
-import Debug from "debug";
-
-const debug = Debug("plugins/plugin-http-shell");
-
-export default async (registrar: Registrar) => {
-  debug("register usage handler");
-  registrar.subtree("/help-shell", { usage });
-};

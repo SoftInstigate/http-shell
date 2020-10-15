@@ -42,7 +42,10 @@ export async function urlFile(
   usage: UsageModel
 ): Promise<MultiModalResponse | string> {
   if (!args || args.length < 3) {
-    throw new UsageError({ message: errorMsg(usage), usage: usage });
+    const error = new UsageError({ message: errorMsg(usage), usage: usage });
+    debug('error', error);
+
+    throw error;
   } else {
     const uri = args[1];
     const urlPrefix = Store().getItem("url");

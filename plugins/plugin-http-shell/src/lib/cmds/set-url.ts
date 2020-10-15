@@ -15,9 +15,10 @@
  */
 
 import { Arguments, Registrar, Store, UsageError } from "@kui-shell/core";
-// import Debug from "debug";
+
 import { setUrlUsage as usage, errorMsg } from "../usage";
 
+// import Debug from "debug";
 // const debug = Debug("plugins/plugin-http-shell/set-url");
 
 const setUrlCmd = async ({ argvNoOptions: args }: Arguments) => {
@@ -26,12 +27,12 @@ const setUrlCmd = async ({ argvNoOptions: args }: Arguments) => {
   } else {
     Store().setItem("url", args[2]);
 
-    return "ok";
+    return 'ok';
   }
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/set/url", setUrlCmd, {
+  registrar.listen('/set/url', setUrlCmd, {
     usage: usage,
     noAuthOk: true
   });
