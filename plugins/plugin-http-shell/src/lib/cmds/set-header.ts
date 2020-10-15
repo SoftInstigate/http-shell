@@ -16,11 +16,11 @@
 
 import { Arguments, Registrar, Store, UsageError } from "@kui-shell/core";
 
-import { setUrlUsage as usage } from "../usage";
+import { setHeaderUsage as usage, errorMsg } from "../usage";
 
 const setHeaderCmd = async ({ argvNoOptions: args }: Arguments) => {
   if (!args || args.length < 4) {
-    throw new UsageError({ usage: usage });
+    throw new UsageError({ message: errorMsg(usage), usage: usage });
   } else {
     let _headers = Store().getItem("headers");
 

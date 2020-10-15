@@ -17,13 +17,13 @@
 import { UsageModel } from "@kui-shell/core";
 
 export const setAuthUsage: UsageModel = {
-  title: "set auth",
+  title: "set auth <id> <password>",
   header: "sets the basic authentication credentials",
-  example: "set auth <id> <password>",
+  example: "set auth foo bar",
   detailedExample: [
     {
-      command: "set auth admin secret",
-      docs: 'sets the credentials for user "admin"'
+      command: "set auth foo bar",
+      docs: 'sets the basic authentication credentials for user "foo" with password "bar"'
     }
   ],
   required: [
@@ -40,25 +40,25 @@ export const setAuthUsage: UsageModel = {
 };
 
 export const setUrlUsage: UsageModel = {
-  title: "set url",
-  header: "sets the base url for requests",
-  example: "set url <url>",
+  title: "set url <url>",
+  header: "sets the base-url for requests",
+  example: "set url http://127.0.0.1:8080",
   detailedExample: [
     {
       command: "set url http://127.0.0.1:8080",
-      docs: "sets the base url as on localhost port 8080"
+      docs: "sets the base-url as on localhost port 8080"
     }
   ],
   required: [
     { name: "url", docs: "the URL of API endpoint", file: false, positional: true }
   ],
-  parents: [{ command: "helpshell" }]
+  parents: [{ command: "help-shell" }]
 };
 
 export const setHeaderUsage: UsageModel = {
   title: "set header <name> <value>",
   header: "sets the header for requests",
-  example: "set header If-None-Match 5f7ef3816413c95851fcbcfe",
+  example: "set header Content-Type application/json",
   detailedExample: [
     {
       command: "set header Content-Type application/json",
@@ -73,7 +73,7 @@ export const setHeaderUsage: UsageModel = {
 };
 
 export const getHeadersUsage: UsageModel = {
-  title: "set headers",
+  title: "get headers",
   header: "prints the headers",
   example: "get headers",
   detailedExample: [
@@ -88,13 +88,13 @@ export const getHeadersUsage: UsageModel = {
 };
 
 export const resetHeadersUsage: UsageModel = {
-  title: "reset headers",
-  header: "clear the headers",
-  example: "reset headers",
+  title: 'reset headers',
+  header: 'cleart all the headers that were previously setset via command "set header"',
+  example: 'reset headers',
   detailedExample: [
     {
-      command: "reset headers",
-      docs: "clears the headers"
+      command: 'reset headers',
+      docs: 'cleart all the headers that were previously setset via command "set header"'
     }
   ],
   required: [
@@ -103,14 +103,14 @@ export const resetHeadersUsage: UsageModel = {
 };
 
 export const getUsage: UsageModel = {
-  title: "get",
+  title: "get <uri>",
   header: "executes a GET request",
-  example: "get <uri>",
+  example: "get messages",
   detailedExample: [
     {
-      command: "get /coll",
+      command: "get messages",
       docs:
-        'executes the request GET <base-url>+<uri>, where base url is set via the command "set url"'
+        'executes the request GET <base-url>/messages, where base-url is set via the command "set url"'
     }
   ],
   required: [
@@ -125,14 +125,14 @@ export const getUsage: UsageModel = {
 };
 
 export const optionsUsage: UsageModel = {
-  title: "options",
+  title: "options <uri>",
   header: "executes an OPTIONS request",
-  example: "options <uri>",
+  example: "options messages",
   detailedExample: [
     {
-      command: "options /coll",
+      command: "options messages",
       docs:
-        'executes the request OPTIONS <base-url>+<uri>, where base url is set via the command "set url"'
+        'executes the request OPTIONS <base-url>/messages, where base-url is set via the command "set url"'
     }
   ],
   required: [
@@ -147,14 +147,14 @@ export const optionsUsage: UsageModel = {
 };
 
 export const deleteUsage: UsageModel = {
-  title: "delete",
+  title: "delete <uri>",
   header: "executes a DELETE request",
-  example: "delete <uri>",
+  example: "delete messages",
   detailedExample: [
     {
-      command: "delete /coll",
+      command: "delete messages",
       docs:
-        'executes the request DELETE <base-url>+<uri>, where base url is set via the command "set url"'
+        'executes the request DELETE <base-url>/messages, where base-url is set via the command "set url"'
     }
   ],
   required: [
@@ -169,14 +169,14 @@ export const deleteUsage: UsageModel = {
 };
 
 export const postUsage: UsageModel = {
-  title: "post",
+  title: "post <uri> <file>",
   header: "executes a POST request",
-  example: "get <uri> <file>",
+  example: "get messages newMessage.json",
   detailedExample: [
     {
       command: "post /coll data.json",
       docs:
-        'executes the request POST <base-url>+<uri>, where base url is set via the command "set url" sending the content of the file data.json as the request body'
+        'executes the request POST <base-url>/messages, where base-url is set via the command "set url" sending the content of the file newMessage.json as the request body'
     }
   ],
   required: [
@@ -197,14 +197,14 @@ export const postUsage: UsageModel = {
 };
 
 export const putUsage: UsageModel = {
-  title: "put",
+  title: "put <uri> <file>",
   header: "executes a PUT request",
-  example: "put <uri> <file>",
+  example: "put messages/id message.json",
   detailedExample: [
     {
-      command: "put /coll data.json",
+      command: "put messages/id message.json",
       docs:
-        'executes the request PUT <base-url>+<uri>, where base url is set via the command "set url" sending the content of the file data.json as the request body'
+        'executes the request PUT <base-url>/messages/id, where base-url is set via the command "set url" sending the content of the file message.json as the request body'
     }
   ],
   required: [
@@ -225,14 +225,14 @@ export const putUsage: UsageModel = {
 };
 
 export const patchUsage: UsageModel = {
-  title: "patch",
+  title: "patch <uri> <file>",
   header: "executes a PATCH request",
-  example: "patch <uri> <file>",
+  example: "patch messages/id message.json",
   detailedExample: [
     {
-      command: "patch /coll/id data.json",
+      command: "patch messages/id message.json",
       docs:
-        'executes the request PATCH <base-url>+<uri>(id), where base url is set via the command "set url" sending the content of the file data.json as the request body'
+        'executes the request PATCH <base-url>/messages/id, where base-url is set via the command "set url" sending the content of the file message.json as the request body'
     }
   ],
   required: [
@@ -265,11 +265,19 @@ export const toplevelUsage: UsageModel = {
       command: "get auth",
       docs: "prints the basic authentication credentials"
     },
-    { command: "set url", docs: "sets the base url" },
-    { command: "get url", docs: "prints the base url" },
+    { command: "set url", docs: "sets the base-url" },
+    { command: "get url", docs: "prints the base-url" },
     { command: "get <uri>", docs: "executes the GET request to url=<base-url>+<uri>" },
     { command: "post <uri> <file>", docs: "executes the POST request to url=<base-url>+<uri>" }
   ]
 
   // children: { a: { route: '/set/auth', usage: setAuthUsage } }
 };
+
+export function errorMsg(model: UsageModel): string {
+    return `      ${model.header} 
+      usage: ${model.title}
+      example:
+      > ${model.detailedExample[0].command}
+      ${model.detailedExample[0].docs}`
+}

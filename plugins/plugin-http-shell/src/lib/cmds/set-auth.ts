@@ -16,7 +16,7 @@
 
 import { Arguments, Registrar, Store, UsageError } from "@kui-shell/core";
 import Debug from "debug";
-import { setAuthUsage as usage } from "../usage";
+import { setAuthUsage as usage, errorMsg } from "../usage";
 
 const debug = Debug("plugins/plugin-http-shell/set-auth");
 
@@ -24,7 +24,7 @@ const debug = Debug("plugins/plugin-http-shell/set-auth");
 const setAuth = ({ argvNoOptions: args }: Arguments) => {
   debug("setAuth invoked");
   if (!args || args.length < 4) {
-    throw new UsageError({ usage: usage });
+    throw new UsageError({ message: errorMsg(usage), usage: usage });
   } else {
     Store().setItem("id", args[2]);
     Store().setItem("pwd", args[3]);

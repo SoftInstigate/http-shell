@@ -24,6 +24,7 @@ import {
 
 import { Response, ResponseError, SuperAgentRequest } from "superagent";
 import { readFileSync } from "fs";
+import { errorMsg } from '../usage'
 const { BrowserWindow } = require("electron");
 
 import Debug from "debug";
@@ -41,7 +42,7 @@ export async function urlFile(
   usage: UsageModel
 ): Promise<MultiModalResponse | string> {
   if (!args || args.length < 3) {
-    throw new UsageError({ usage: usage });
+    throw new UsageError({ message: errorMsg(usage), usage: usage });
   } else {
     const uri = args[1];
     const urlPrefix = Store().getItem("url");
@@ -207,7 +208,7 @@ export async function url(
   usage: UsageModel
 ): Promise<MultiModalResponse | string> {
   if (!args || args.length < 2) {
-    throw new UsageError({ usage: usage });
+    throw new UsageError({ message: errorMsg(usage), usage: usage });
   } else {
     const uri = args[1];
     const urlPrefix = Store().getItem("url");
