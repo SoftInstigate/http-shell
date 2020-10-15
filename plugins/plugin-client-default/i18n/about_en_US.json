@@ -1,6 +1,6 @@
 {
   "about": "About",
-  "about:content": "[![HTTP Shell: The Shell for API](https://restheart.org/images/rh_logo_vert.png)](http://restheart.org)\n\n**HTTP Shell** is a tool that provides developers a modern alternative to http clients for interacting with APIs.",
+  "about:content": "[![HTTP Shell: The Shell for executing API requests](https://restheart.org/images/rh_logo_vert.png)](http://restheart.org)\n\n**HTTP Shell** is a tool that provides developers a modern alternative to http clients for interacting with APIs.",
   "theme": "Themes",
   "Configure": "Configure",
   "tutorial": "Getting Started",

@@ -308,11 +308,11 @@
             "response": true,
             "historyIdx": 251,
             "cwd": "~/development/http-shell",
-            "command": "help http shell",
+            "command": "help http-shell",
             "startEvent": {
               "route": "/help/http-shell",
               "startTime": 1602238674617,
-              "command": "help http shell",
+              "command": "help http-shell",
               "evaluatorOptions": {
                 "plugin": "plugin-http-shell"
               },
@@ -322,15 +322,15 @@
             "completeEvent": {
               "execType": 0,
               "completeTime": 1602238674736,
-              "command": "help http shell",
+              "command": "help http-shell",
               "argvNoOptions": [
                 "help",
-                "helpshell"
+                "help-shell"
               ],
               "parsedOptions": {
                 "_": [
                   "help",
-                  "helpshell"
+                  "help-shell"
                 ]
               },
               "execUUID": "8f31f28d-c56f-4131-b42a-d0ecc919f199",

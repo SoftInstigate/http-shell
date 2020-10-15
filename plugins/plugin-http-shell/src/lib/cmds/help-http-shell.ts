@@ -34,7 +34,7 @@ const usage: MultiModalResponse = {
 | set url <url> | sets the base url to use in further requests | > set url http://127.0.0.1:8080 |
 | get url | prints the base url | > get url |
 | get <uri> | executes the GET request to url=<base-url>+<uri> | > get /collection |
-| edit <file> | opens <file> for editing | > edit body.json |
+| edit <file> | opens <file> for editing. Tip, hit key F1 for list of editor commands | > edit body.json |
 | post <uri> <file> | executes the request POST <base-url>+<uri>, sending the content of <file> as the request body | > post /collection body.json |
 | put <uri> <file> | executes the request PUT <base-url>+<uri>, sending the content of <file> as the request body | > put /collection body.json |
 | patch <uri> <file> | executes the request PATCH <base-url>+<uri>, sending the content of <file> as the request body | > patch /collection body.json |

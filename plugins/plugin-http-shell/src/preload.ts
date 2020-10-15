@@ -22,5 +22,5 @@ const debug = Debug("plugins/plugin-http-shell");
 
 export default async (registrar: Registrar) => {
   debug("register usage handler");
-  registrar.subtree("/helpshell", { usage });
+  registrar.subtree("/help\-shell", { usage });
 };

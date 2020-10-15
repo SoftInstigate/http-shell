@@ -121,7 +121,7 @@ export async function urlFile(
             ? res.headers['content-type']
             : 'json';
 
-        const ct = _ct === 'application/json' ? 'json' : _ct;
+        const ct = _ct === 'application/json' || _ct === 'application/hal+json' ? 'json' : _ct;
 
         if (res.text) {
           ret.modes.push({
@@ -275,7 +275,7 @@ export async function url(
             ? res.headers['content-type']
             : 'json';
 
-        const ct = _ct === 'application/json' ? 'json' : _ct;
+            const ct = _ct === 'application/json' || _ct === 'application/hal+json' ? 'json' : _ct;
 
         if (res.text) {
           ret.modes.push({

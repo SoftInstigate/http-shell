@@ -37,8 +37,6 @@ import { toplevelUsage } from './lib/usage'
 // const debug = Debug("plugins/plugin-http-shell");
 
 export default async (registrar: Registrar) => {
-  const usage  = { usage: toplevelUsage.available }
-
   await Promise.all([
     helpshell(registrar),
     setauth(registrar),

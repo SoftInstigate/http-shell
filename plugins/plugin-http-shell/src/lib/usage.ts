@@ -36,7 +36,7 @@ export const setAuthUsage: UsageModel = {
     }
   ],
   // optional: []
-  parents: [{ command: "httpshell" }]
+  parents: [{ command: "https-hell" }]
 };
 
 export const setUrlUsage: UsageModel = {
@@ -69,7 +69,7 @@ export const setHeaderUsage: UsageModel = {
     { name: "name", docs: "the name of the header to set", file: false, positional: true },
     { name: "value", docs: "the value of the header", file: false, positional: true }
   ],
-  parents: [{ command: "httpshell" }]
+  parents: [{ command: "http-shell" }]
 };
 
 export const getHeadersUsage: UsageModel = {
@@ -99,7 +99,7 @@ export const resetHeadersUsage: UsageModel = {
   ],
   required: [
   ],
-  parents: [{ command: "helpshell" }]
+  parents: [{ command: "http-shell" }]
 };
 
 export const getUsage: UsageModel = {
@@ -121,7 +121,7 @@ export const getUsage: UsageModel = {
       positional: true
     }
   ],
-  parents: [{ command: "helpshell" }]
+  parents: [{ command: "http-shell" }]
 };
 
 export const optionsUsage: UsageModel = {
@@ -143,7 +143,7 @@ export const optionsUsage: UsageModel = {
       positional: true
     }
   ],
-  parents: [{ command: "helpshell" }]
+  parents: [{ command: "http-shell" }]
 };
 
 export const deleteUsage: UsageModel = {
@@ -165,7 +165,7 @@ export const deleteUsage: UsageModel = {
       positional: true
     }
   ],
-  parents: [{ command: "helpshell" }]
+  parents: [{ command: "http-shell" }]
 };
 
 export const postUsage: UsageModel = {
@@ -193,7 +193,7 @@ export const postUsage: UsageModel = {
       positional: true
     }
   ],
-  parents: [{ command: "helpshell" }]
+  parents: [{ command: "http-shell" }]
 };
 
 export const putUsage: UsageModel = {
@@ -221,7 +221,7 @@ export const putUsage: UsageModel = {
       positional: true
     }
   ],
-  parents: [{ command: "helpshell" }]
+  parents: [{ command: "http-shell" }]
 };
 
 export const patchUsage: UsageModel = {
@@ -249,7 +249,7 @@ export const patchUsage: UsageModel = {
       positional: true
     }
   ],
-  parents: [{ command: "helpshell" }]
+  parents: [{ command: "http-shell" }]
 };
 
 /**

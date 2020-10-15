@@ -44,9 +44,7 @@ const welcomeBit = 'plugin-client-default.welcome-was-dismissed'
  *
  */
 export default function renderMain(props: KuiProps) {
-
-
-  const title = strings('Welcome to Kui')
+  const title = strings('HTTP Shell')
 
   return (
     <Kui
