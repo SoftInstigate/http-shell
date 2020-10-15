@@ -15,5 +15,5 @@
  */
 
 export { default as CurrentUrlWidget } from './view/CurrentUrlWidget'
-export { default as CurrentIdWidget } from './view/CurrentIdWidget'
+export { default as CurrentIdWidget } from './view/BasicAuthenticationWidget'
 export { default as HelpWidget } from './view/HelpWidget'

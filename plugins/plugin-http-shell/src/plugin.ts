@@ -18,7 +18,6 @@ import { Registrar } from '@kui-shell/core';
 import setauth from './lib/cmds/set-auth';
 import seturl from './lib/cmds/set-url';
 import geturl from './lib/cmds/get-url';
-import getauth from './lib/cmds/get-auth';
 import get from './lib/cmds/get';
 import post from './lib/cmds/post';
 import put from './lib/cmds/put';
@@ -30,7 +29,6 @@ import getheaders from './lib/cmds/get-headers';
 import helpshell from './lib/cmds/help-http-shell';
 import resetheaders from './lib/cmds/reset-headers';
 import resetauth from './lib/cmds/reset-auth';
-import { toplevelUsage } from './lib/usage'
 // import help from './lib/cmds/help';
 
 // import Debug from "debug";
@@ -43,7 +41,6 @@ export default async (registrar: Registrar) => {
     helpshell(registrar),
     setauth(registrar),
     resetauth(registrar),
-    getauth(registrar),
     seturl(registrar),
     geturl(registrar),
     get(registrar),
@@ -54,6 +51,6 @@ export default async (registrar: Registrar) => {
     options(registrar),
     setheader(registrar),
     getheaders(registrar),
-    resetheaders(registrar),
+    resetheaders(registrar)
   ]);
 };

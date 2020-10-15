@@ -15,11 +15,6 @@
  */
 
 import * as React from "react";
-import {
-  Store,
-  wireToStandardEvents,
-  // unwireToStandardEvents
-} from "@kui-shell/core";
 import { TextWithIconWidget } from "@kui-shell/plugin-client-common";
 import { Icons } from "@kui-shell/plugin-client-common"
 

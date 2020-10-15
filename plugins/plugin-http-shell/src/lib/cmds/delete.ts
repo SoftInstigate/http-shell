@@ -25,7 +25,7 @@ import { del } from "superagent";
 import { url } from './requests';
 
 const deleteCmd = async (args: Arguments): Promise<MultiModalResponse | string> => {
-  return  url(args, del, usage);
+  return url(args, del, usage);
 };
 
 export default async (registrar: Registrar) => {

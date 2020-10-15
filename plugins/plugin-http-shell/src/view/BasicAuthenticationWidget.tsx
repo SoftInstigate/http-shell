@@ -18,37 +18,39 @@ import * as React from "react";
 import {
   Store,
   wireToStandardEvents,
-  // unwireToStandardEvents
+  unwireToStandardEvents
 } from "@kui-shell/core";
 import { TextWithIconWidget } from "@kui-shell/plugin-client-common";
 import { Icons } from "@kui-shell/plugin-client-common"
+import Debug from "debug";
+import emitter from '../lib/utils/Emitter';
+const debug = Debug("plugins/plugin-http-shell/basic-auth-widget");
 
 interface Props {
-  className?: string;
 }
 
 interface State {
   id: string
 }
 
-export default class CurrentIdWidget extends React.PureComponent<Props, State> {
-  private readonly handler = this.reportCurrentId.bind(this);
+export default class BasicAuthenticationWidget extends React.PureComponent<Props, State> {
+  private readonly handler = this.currentId.bind(this);
 
   public constructor(props: Props) {
     super(props);
 
     this.state = {
-      id: Store().getItem("id") ? Store().getItem("id") : "not authenticated"
+      id: Store().getItem("id") ? Store().getItem("id") : "not set"
     };
   }
 
   /**
-   * Check the current working directory
+   * Check the current basic auth id
    *
    */
-  private async reportCurrentId() {
+  private async currentId() {
     this.setState({
-      id: Store().getItem("id") ? Store().getItem("id") : "not authenticated"
+      id: Store().getItem("id") ? Store().getItem("id") : "not set"
     });
   }
 
@@ -58,25 +60,26 @@ export default class CurrentIdWidget extends React.PureComponent<Props, State> {
    *
    */
   public componentDidMount() {
+    emitter.on('/current/id/change', (e) => this.currentId());
     this.handler();
-    wireToStandardEvents(this.handler);
+    //wireToStandardEvents(this.handler);
   }
 
   /** Make sure to unsubscribe! */
   public componentWillUnmount() {
-    // unwireToStandardEvents(this.handler);
+    emitter.off('/current/id/change');
+    //unwireToStandardEvents(this.handler);
   }
 
   public render() {
     return (
       <TextWithIconWidget
-        className={this.props.className}
         text={this.state.id}
         viewLevel="normal"
         id="kui--plugin-http-shell--current-id-widget"
-        title={'The current client id'}
-        textOnclick="get auth"
-        iconOnclick="get auth"
+        title={'Basic Authentication'}
+        textOnclick="set auth"
+        iconOnclick="set auth"
       >
         <Icons icon="At" />
       </TextWithIconWidget>

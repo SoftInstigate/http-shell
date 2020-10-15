@@ -14,24 +14,20 @@
  * limitations under the License.
  */
 
-import { Arguments, Registrar, Store, UsageError } from "@kui-shell/core";
+import { Registrar, Store } from "@kui-shell/core";
+import { setAuthUsage as usage } from "../usage";
+import { default as PasswordForm } from '../../view/PasswordForm'
+import emitter from '../utils/Emitter';
 import Debug from "debug";
-import { setAuthUsage as usage, errorMsg } from "../usage";
-
 const debug = Debug("plugins/plugin-http-shell/set-auth");
 
-// const setAuth =  async
-const setAuth = ({ argvNoOptions: args }: Arguments) => {
-  debug("setAuth invoked");
-  if (!args || args.length < 4) {
-    throw new UsageError({ message: errorMsg(usage), usage: usage });
-  } else {
-    Store().setItem("id", args[2]);
-    Store().setItem("pwd", args[3]);
-
-    return "ok";
-  }
+const setAuth = () => {
+  return { react: PasswordForm({  cid: Store().getItem("id"),
+                                  cpwd: Store().getItem("id"),
+                                  id: e => { Store().setItem("id", e); emitter.emit('/current/id/change', e); } ,
+                                  pwd: e => Store().setItem("pwd", e)  }) }
 };
+
 
 export default async (registrar: Registrar) => {
   registrar.listen("/set/auth", setAuth, {

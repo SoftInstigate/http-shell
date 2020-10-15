@@ -17,24 +17,15 @@
 import { UsageModel } from "@kui-shell/core";
 
 export const setAuthUsage: UsageModel = {
-  title: "set auth <id> <password>",
-  header: "sets the basic authentication credentials",
-  example: "set auth foo bar",
+  title: "set auth",
+  header: "opens a dialog to sets the basic authentication credentials to use in further requests",
+  example: "set auth",
   detailedExample: [
     {
-      command: "set auth foo bar",
-      docs: 'sets the basic authentication credentials for user "foo" with password "bar"'
+      command: "set auth",
+      docs: 'opens a dialog to sets the basic authentication credentials to use in further requests'
     }
-  ],
-  required: [
-    { name: "id", docs: "the client id", file: false, positional: true },
-    {
-      name: "pwd",
-      docs: "the client password",
-      file: false,
-      positional: true
-    }
-  ],
+  ]
   // optional: []
 };
 
@@ -250,10 +241,6 @@ export const toplevelUsage: UsageModel = {
   header: "Commands to execute HTTP Shell requests",
   available: [
     { command: "set auth", docs: "sets the basic authentication credentials" },
-    {
-      command: "get auth",
-      docs: "prints the basic authentication credentials"
-    },
     { command: "set url", docs: "sets the base-url" },
     { command: "get url", docs: "prints the base-url" },
     { command: "get <uri>", docs: "executes the GET request to url=<base-url>+<uri>" },
