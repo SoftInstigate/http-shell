@@ -9,20 +9,24 @@
 ### typical usage
 
 ```
-$ set url http://127.0.0.1:8080
+> set url http://127.0.0.1:8080
 
-$ set auth
+> set auth
 
-$ edit /tmp/message.json
+> edit /tmp/message.json
 
-$ put messages/foo /tmp/message.json
+> put messages/foo /tmp/message.json
 
-$ get messages/foo
+> get messages/foo
 ```
 
-With `set url` and `set auth` we set the *base url* and the *basic authentication* credentials  to use in further requests. 
+- With `set url` and `set auth` we set the *base URL* and the *basic authentication* credentials to use in further requests.
 
-The following `put` and `get` commands with `id:secret` credentials against the URL `http://127.0.0.1:8080/messages/1`, i.e. base URL plus the specified resource URI.
+- The command `edit` opens the [Monaco Editor](https://github.com/Microsoft/monaco-editor) to create the json file `message.json`.
+
+- The following `put` command executes the `PUT` HTTP request on the URL `http://127.0.0.1:8080/messages/foo` (that is the *base URL* plus the specified resource URI(), sending the request body from the file `message.json`.
+
+- The following `get` command executes the `GET` HTTP requests respectively on the URL `http://127.0.0.1:8080/messages/foo` opening the response body in the Shell sidecar.
 
 ### commands
 
