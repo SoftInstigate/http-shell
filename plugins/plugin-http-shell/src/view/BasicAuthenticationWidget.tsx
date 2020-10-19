@@ -54,21 +54,21 @@ export default class BasicAuthenticationWidget extends React.PureComponent<Props
     });
   }
 
+  public listener = (e) => this.currentId();
+
   /**
    * Once we have mounted, we immediately check the state,
    * and schedule an update based on standard REPL events.
    *
    */
   public componentDidMount() {
-    emitter.on('/current/id/change', (e) => this.currentId());
+    emitter.on('/current/id/change', this.listener);
     this.handler();
-    //wireToStandardEvents(this.handler);
   }
 
   /** Make sure to unsubscribe! */
   public componentWillUnmount() {
-    emitter.off('/current/id/change');
-    //unwireToStandardEvents(this.handler);
+    emitter.removeListener('/current/id/change', this.listener);
   }
 
   public render() {
