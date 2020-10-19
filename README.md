@@ -32,21 +32,19 @@
 
 | command | description | example
 |---|---|---|
-| set auth <id> <password> | opens a dialog to sets the basic authentication credentials to use in further requests | > set auth |
+| set auth &lt;id&gt; &lt;password&gt; | opens a dialog to sets the basic authentication credentials to use in further requests | > set auth |
 | reset auth | clear the basic authentication credentials | > reset auth |
-| set url <url> | sets the base url to use in further requests | > set url http://127.0.0.1:8080 |
+| set url &lt;url&gt; | sets the base url to use in further requests | > set url http://127.0.0.1:8080 |
 | get url | prints the base url | > get url |
-| get <uri> | executes the GET request to url=<base-url>+<uri> | > get /collection |
-| edit <file> | opens <file> for editing | > edit body.json |
-| post <uri> <file> | executes the request POST <base-url>+<uri>, sending the content of <file> as the request body | > post /collection body.json |
-| put <uri> <file> | executes the request PUT <base-url>+<uri>, sending the content of <file> as the request body | > put /collection body.json |
-| patch <uri> <file> | executes the request PATCH <base-url>+<uri>, sending the content of <file> as the request body | > patch /collection body.json |
-| delete <uri> | executes the DELETE request to url=<base-url>+<uri> | > delete /collection |
-| set header <name> <value> | set the header <name> to <value> | > set header If-Match 5f7f35efcb800f2502f95cb5 |
+| get &lt;uri&gt; | executes the GET request to url=&lt;base-url&gt;+&lt;uri&gt; | > get /collection |
+| edit &lt;file&gt; | opens &lt;file&gt; for editing | > edit body.json |
+| post &lt;uri&gt; &lt;file&gt; | executes the request POST &lt;base-url>+&lt;uri&gt;, sending the content of &lt;file&gt; as the request body | > post /collection body.json |
+| put &lt;uri&gt; &lt;file&gt; | executes the request PUT &lt;base-url&gt;+&lt;uri&gt;, sending the content of &lt;file&gt; as the request body | > put /collection body.json |
+| patch &lt;uri&gt; &lt;file&gt; | executes the request PATCH &lt;base-url&gt;+&lt;uri&gt;, sending the content of &lt;file&gt; as the request body | > patch /collection body.json |
+| delete &lt;uri&gt; | executes the DELETE request to url=&lt;base-url&gt;+&lt;uri&gt; | > delete /collection |
+| set header &lt;name&gt; &lt;value&gt; | set the header &lt;name&gt; to &lt;value&gt; | > set header If-Match 5f7f35efcb800f2502f95cb5 |
 | get headers | prints the current set headers | > get headers |
 | clear headers | clears the headers | > clear headers |
-
-
 
 ## Build from source
 
