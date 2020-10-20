@@ -2,6 +2,10 @@
 
 **HTTP Shell** is a tool that provides developers a modern alternative to http clients for interacting with APIs.
 
+It's built on top of IBM's open source [Kui framework](https://github.com/IBM/kui).
+
+> Kui combines the power of familiar CLIs with visualizations in high-impact areas. Kui enables you to manipulate complex JSON and YAML data models, integrate disparate tooling, and provides quick access to aggregate views of operational data.
+
 ![HTTP Shell Image](./plugins/plugin-client-default/images/httpshellImage.png)
 
 ## Usage
