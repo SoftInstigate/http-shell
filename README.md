@@ -1,6 +1,6 @@
 # HTTP Shell
 
-**HTTP Shell** is a tool that provides developers a modern alternative to http clients for interacting with APIs.
+**HTTP Shell** is a tool that provides developers a modern alternative to http clients for interacting with APIs. Let's see it as something between a raw command line tool, like curl or httpie, and a more user friendly REST client, like Postman.
 
 It's built on top of IBM's open source [Kui framework](https://github.com/IBM/kui).
 
