@@ -1,6 +1,6 @@
 # HTTP Shell
 
-**HTTP Shell** is a tool that provides developers a modern alternative to http clients for interacting with APIs. Let's see it as something between a raw command line tool, like curl or httpie, and a more user friendly REST client, like Postman.
+**HTTP Shell** is a tool that provides developers with a modern alternative to http clients for interacting with APIs. Let's see it as something between a raw command line tool, like curl or httpie, and a more user friendly REST client, like Postman.
 
 It's built on top of IBM's open source [Kui framework](https://github.com/IBM/kui).
 
@@ -10,7 +10,7 @@ It's built on top of IBM's open source [Kui framework](https://github.com/IBM/ku
 
 ## Usage
 
-Find more **HTTP Shell** usage information, commands and examples on [RESTHeart documentation](https://restheart.org/docs/http-shell).
+Find more **HTTP Shell**'s usage information, commands and examples on [RESTHeart documentation](https://restheart.org/docs/http-shell).
 
 ## Build from source
 
@@ -20,11 +20,11 @@ First step:
 npm ci
 ```
 
-Next, choose your adventure from the following variants:
+Next, choose your journey from the following variants:
 
 ### Variant 1: I want to develop an Electron client
 
-Use these commands while developing. The first starts up the webpack
+Use these commands while developing. The first starts up the Webpack
 watcher. Each time you execute the second, an Electron window will
 open.
 
@@ -52,7 +52,7 @@ npm run watch:source
 npm run watch:webpack
 ```
 
-Then visit http://localhost:9080. To build a production set of webpack
+Then visit http://localhost:9080. To build a production set of Webpack
 bundles, use this command:
 
 ```sh
