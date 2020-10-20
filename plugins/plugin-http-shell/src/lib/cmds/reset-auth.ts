@@ -15,7 +15,7 @@
  */
 
 import { Arguments, Registrar, Store, UsageError } from "@kui-shell/core";
-
+import emitter from '../utils/Emitter';
 import { setUrlUsage as usage, errorMsg } from "../usage";
 
 const resetHeadersCmd = async ({ argvNoOptions: args }: Arguments) => {
@@ -24,6 +24,7 @@ const resetHeadersCmd = async ({ argvNoOptions: args }: Arguments) => {
   } else {
     Store().removeItem("id");
     Store().removeItem("pwd");
+    emitter.emit('/current/id/change', undefined);
 
     return "ok";
   }
