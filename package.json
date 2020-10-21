@@ -1,7 +1,15 @@
 {
   "name": "http-shell",
   "version": "0.0.2",
-  "description": "A CLI tool that provides developers a modern alternative to http clients for interacting with APIs.",
+  "description": "A CLI tool that provides developers with a modern alternative to HTTP clients for interacting with APIs.",
+  "homepage": "https://github.com/SoftInstigate/http-shell",
+  "keywords": ["API", "REST", "HTTP", "cli", "shell"],
+  "author": "Andrea Di Cesare (andrea@softinstigate.com)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "email": "info@softinstigate.com",
+    "url": "https://github.com/SoftInstigate/http-shell/issues"
+  },
   "main": "node_modules/@kui-shell/core/dist/main/main.js",
   "scripts": {
     "watch:source": "tsc --build . --watch",
@@ -28,9 +36,6 @@
     "start": "WATCH_ARGS='-open' npm run watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "Apache-2.0",
   "devDependencies": {
     "@kui-shell/builder": "^9.0.0",
     "@kui-shell/proxy": "^9.0.0",
