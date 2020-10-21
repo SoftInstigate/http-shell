@@ -279,7 +279,8 @@ export async function url(
             ? res.headers['content-type']
             : 'json';
 
-            const ct = _ct === 'application/json' || _ct === 'application/hal+json' ? 'json' : _ct;
+        const mediaType = _ct.split(';')[0]
+        const ct = mediaType === 'application/json' || mediaType === 'application/hal+json' ? 'json' : mediaType;
 
         if (res.text) {
           ret.modes.push({
