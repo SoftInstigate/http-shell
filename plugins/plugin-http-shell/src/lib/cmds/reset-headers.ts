@@ -29,7 +29,7 @@ const resetHeadersCmd = async ({ argvNoOptions: args }: Arguments) => {
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/reset/headers", resetHeadersCmd, {
+  registrar.listen("/h/reset/headers", resetHeadersCmd, {
     usage: usage,
     noAuthOk: true
   });

@@ -29,7 +29,7 @@ const deleteCmd = async (args: Arguments): Promise<MultiModalResponse | string> 
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/delete", deleteCmd, {
+  registrar.listen("/h/delete", deleteCmd, {
     usage: usage,
     noAuthOk: true,
   });

@@ -31,7 +31,7 @@ const getUrl = () => {
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/get/url", getUrl, {
+  registrar.listen("/h/get/url", getUrl, {
     noAuthOk: true
   });
 };

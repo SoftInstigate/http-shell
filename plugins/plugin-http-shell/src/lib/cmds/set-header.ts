@@ -19,7 +19,7 @@ import { Arguments, Registrar, Store, UsageError } from "@kui-shell/core";
 import { setHeaderUsage as usage, errorMsg } from "../usage";
 
 const setHeaderCmd = async ({ argvNoOptions: args }: Arguments) => {
-  if (!args || args.length < 4) {
+  if (!args || args.length < 5) {
     throw new UsageError({ message: errorMsg(usage), usage: usage });
   } else {
     let _headers = Store().getItem("headers");
@@ -30,7 +30,7 @@ const setHeaderCmd = async ({ argvNoOptions: args }: Arguments) => {
 
     const headers = JSON.parse(_headers);
 
-    headers.push({k: args[2], v: args[3]});
+    headers.push({k: args[3], v: args[4]});
 
     Store().setItem("headers", JSON.stringify(headers));
 
@@ -39,7 +39,7 @@ const setHeaderCmd = async ({ argvNoOptions: args }: Arguments) => {
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/set/header", setHeaderCmd, {
+  registrar.listen("/h/set/header", setHeaderCmd, {
     usage: usage,
     noAuthOk: true
   });

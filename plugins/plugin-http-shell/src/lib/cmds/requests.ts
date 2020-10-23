@@ -41,16 +41,16 @@ export async function urlFile(
   req: UrlRequest,
   usage: UsageModel
 ): Promise<MultiModalResponse | string> {
-  if (!args || args.length < 3) {
+  if (!args || args.length < 4) {
     const error = new UsageError({ message: errorMsg(usage), usage: usage });
     debug('error', error);
 
     throw error;
   } else {
-    const uri = args[1];
+    const uri = args[2];
     const urlPrefix = Store().getItem("url");
 
-    const file = args[2];
+    const file = args[3];
 
     if (!urlPrefix) {
       return 'url not set. use "set url"';
@@ -210,10 +210,10 @@ export async function url(
   req: UrlRequest,
   usage: UsageModel
 ): Promise<MultiModalResponse | string> {
-  if (!args || args.length < 2) {
+  if (!args || args.length < 3) {
     throw new UsageError({ message: errorMsg(usage), usage: usage });
   } else {
-    const uri = args[1];
+    const uri = args[2];
     const urlPrefix = Store().getItem("url");
 
     if (!urlPrefix) {

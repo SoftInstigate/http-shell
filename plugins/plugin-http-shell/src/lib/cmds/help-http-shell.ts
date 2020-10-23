@@ -29,19 +29,19 @@ const resp: MultiModalResponse = {
         content: `
 | command | description | example
 |---|---|---|
-| set auth | opens a dialog to sets the basic authentication credentials to use in further requests | > set auth |
-| reset auth | clear the basic authentication credentials | > reset auth |
-| set url <url> | sets the base url to use in further requests | > set url http://127.0.0.1:8080 |
-| get url | prints the base url | > get url |
-| get <uri> | executes the GET request to url=<base-url>+<uri> | > get /collection |
+| h set auth | opens a dialog to sets the basic authentication credentials to use in further requests | > h set auth |
+| h reset auth | clear the basic authentication credentials | > h reset auth |
+| h set url <url> | sets the base url to use in further requests | > h set url http://127.0.0.1:8080 |
+| h get url | prints the base url | > h get url |
+| h get <uri> | executes the GET request to url=<base-url>+<uri> | > h get /messages |
 | edit <file> | opens <file> for editing. Tip, hit key F1 for list of editor commands | > edit body.json |
-| post <uri> <file> | executes the request POST <base-url>+<uri>, sending the content of <file> as the request body | > post /collection body.json |
-| put <uri> <file> | executes the request PUT <base-url>+<uri>, sending the content of <file> as the request body | > put /collection body.json |
-| patch <uri> <file> | executes the request PATCH <base-url>+<uri>, sending the content of <file> as the request body | > patch /collection body.json |
-| delete <uri> | executes the DELETE request to url=<base-url>+<uri> | > delete /collection |
-| set header <name> <value> | set the header <name> to <value> | > set header If-Match 5f7f35efcb800f2502f95cb5 |
-| get headers | prints the current set headers | > get headers |
-| clear headers | clears the headers | > clear headers |
+| h post <uri> <file> | executes the request POST <base-url>+<uri>, sending the content of <file> as the request body | > h post /messages msg.json |
+| h put <uri> <file> | executes the request PUT <base-url>+<uri>, sending the content of <file> as the request body | > h put /messages/foo msg.json |
+| h patch <uri> <file> | executes the request PATCH <base-url>+<uri>, sending the content of <file> as the request body | > h patch /messages msg.json |
+| h delete <uri> | executes the DELETE request to url=<base-url>+<uri> | > h delete /messages |
+| h set header <name> <value> | set the header <name> to <value> | > h set header Authorization "Bearer 5f7f35efcb800f2502f95cb5" |
+| h get headers | prints the current set headers | > h get headers |
+| h reset headers | clears the headers | > h reset headers |
 `,
         contentType: "text/markdown"
       }

@@ -78,8 +78,8 @@ export default class BasicAuthenticationWidget extends React.PureComponent<Props
         viewLevel="normal"
         id="kui--plugin-http-shell--current-id-widget"
         title={'Basic Authentication'}
-        textOnclick="set auth"
-        iconOnclick="set auth"
+        textOnclick="h set auth"
+        iconOnclick="h set auth"
       >
         <Icons icon="At" />
       </TextWithIconWidget>

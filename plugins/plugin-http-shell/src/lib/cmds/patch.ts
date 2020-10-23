@@ -29,7 +29,7 @@ const patchCmd = async (args: Arguments): Promise<MultiModalResponse | string> =
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/patch", patchCmd, {
+  registrar.listen("/h/patch", patchCmd, {
     usage: usage,
     noAuthOk: true,
   });

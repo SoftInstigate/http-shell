@@ -29,7 +29,7 @@ const optionsCmd = async (args: Arguments): Promise<MultiModalResponse | string>
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/options", optionsCmd, {
+  registrar.listen("/h/options", optionsCmd, {
     usage: usage,
     noAuthOk: true,
   });

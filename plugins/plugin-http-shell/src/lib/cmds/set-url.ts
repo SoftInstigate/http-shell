@@ -22,17 +22,17 @@ import { setUrlUsage as usage, errorMsg } from "../usage";
 // const debug = Debug("plugins/plugin-http-shell/set-url");
 
 const setUrlCmd = async ({ argvNoOptions: args }: Arguments) => {
-  if (!args || args.length < 3) {
+  if (!args || args.length < 4) {
     throw new UsageError({ message: errorMsg(usage), usage: usage });
   } else {
-    Store().setItem("url", args[2]);
+    Store().setItem("url", args[3]);
 
     return 'ok';
   }
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen('/set/url', setUrlCmd, {
+  registrar.listen('/h/set/url', setUrlCmd, {
     usage: usage,
     noAuthOk: true
   });

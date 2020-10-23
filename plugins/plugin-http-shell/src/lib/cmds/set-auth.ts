@@ -30,7 +30,7 @@ const setAuth = () => {
 
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/set/auth", setAuth, {
+  registrar.listen("/h/set/auth", setAuth, {
     usage,
     noAuthOk: true
   });

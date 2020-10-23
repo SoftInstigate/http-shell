@@ -32,7 +32,7 @@ const getCmd = async (args: Arguments): Promise<MultiModalResponse | string> => 
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/get", getCmd, {
+  registrar.listen("/h/get", getCmd, {
     usage: usage,
     noAuthOk: true,
   });

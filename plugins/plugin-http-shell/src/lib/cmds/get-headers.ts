@@ -41,7 +41,7 @@ const getHeadersCmd = async () => {
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/get/headers", getHeadersCmd, {
+  registrar.listen("/h/get/headers", getHeadersCmd, {
     noAuthOk: true,
   });
 };

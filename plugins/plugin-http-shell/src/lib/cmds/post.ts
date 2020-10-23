@@ -29,7 +29,7 @@ const postCmd = async (args: Arguments): Promise<MultiModalResponse | string> =>
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/post", postCmd, {
+  registrar.listen("/h/post", postCmd, {
     usage: usage,
     noAuthOk: true,
   });

@@ -34,7 +34,7 @@ export default function PasswordComponentSpi(props: Props): React.ReactElement {
 class PasswordComponent extends React.PureComponent<Props> {
   public render() {
     return (
-      <ToastNotification caption="" title="Set auth" kind="info" >
+      <ToastNotification caption="" title="Set basic auth" kind="info" >
         <Form>
           <FormGroup key="" legendText="">
             <TextInput

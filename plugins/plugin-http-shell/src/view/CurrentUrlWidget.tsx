@@ -75,8 +75,8 @@ export default class CurrentUrlWidget extends React.PureComponent<Props, State> 
         viewLevel="normal"
         id="kui--plugin-http-shell--current-url-widget"
         title={'The current base URL'}
-        textOnclick="get url"
-        iconOnclick="get url"
+        textOnclick="h get url"
+        iconOnclick="h get url"
       >
         <Icons icon="Server" />
       </TextWithIconWidget>

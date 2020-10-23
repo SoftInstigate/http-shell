@@ -29,7 +29,7 @@ const putCmd = async (
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/put", putCmd, {
+  registrar.listen("/h/put", putCmd, {
     usage: usage,
     noAuthOk: true,
   });

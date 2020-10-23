@@ -31,7 +31,7 @@ const resetHeadersCmd = async ({ argvNoOptions: args }: Arguments) => {
 };
 
 export default async (registrar: Registrar) => {
-  registrar.listen("/reset/auth", resetHeadersCmd, {
+  registrar.listen("/h/reset/auth", resetHeadersCmd, {
     usage: usage,
     noAuthOk: true
   });
