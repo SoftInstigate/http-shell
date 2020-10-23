@@ -35,12 +35,20 @@ export const setUrlUsage: UsageModel = {
   example: "h set url http://127.0.0.1:8080",
   detailedExample: [
     {
-      command: "h set url http://127.0.0.1:8080",
-      docs: "sets the base-url as on localhost port 8080"
+      command: "h set url https://example.com",
+      docs: "sets the base-url to https://example.com"
+    },
+    {
+      command: "h set url 127.0.0.1:8080",
+      docs: "sets the base-url to http://127.0.0.1:8080"
+    },
+    {
+      command: "h set url :8080",
+      docs: "sets the base-url to http://127.0.0.1:8080"
     }
   ],
   required: [
-    { name: "url", docs: "the URL of API endpoint", file: false, positional: true }
+    { name: "url", docs: "the base-url to use in further requests", file: false, positional: true }
   ]
 };
 

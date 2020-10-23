@@ -31,7 +31,7 @@ const resp: MultiModalResponse = {
 |---|---|---|
 | h set auth | opens a dialog to sets the basic authentication credentials to use in further requests | > h set auth |
 | h reset auth | clear the basic authentication credentials | > h reset auth |
-| h set url <url> | sets the base url to use in further requests | > h set url http://127.0.0.1:8080 |
+| h set url <url> | sets the base url to use in further requests, if <url> does not include the protocol, http is assumed, if <url> only specifies the port (e.g. :8080), localhost is assumed | > h set url http://127.0.0.1:8080 |
 | h get url | prints the base url | > h get url |
 | h get <uri> | executes the GET request to url=<base-url>+<uri> | > h get /messages |
 | edit <file> | opens <file> for editing. Tip, hit key F1 for list of editor commands | > edit body.json |

@@ -25,9 +25,20 @@ const setUrlCmd = async ({ argvNoOptions: args }: Arguments) => {
   if (!args || args.length < 4) {
     throw new UsageError({ message: errorMsg(usage), usage: usage });
   } else {
-    Store().setItem("url", args[3]);
+    const url = `${args[3]}`;
 
-    return 'ok';
+    if (url.startsWith('http://') ||  url.startsWith('https://')) {
+      Store().setItem("url", url);
+      return url;
+    } else if (url.length > 2 && url[0] === ':' && !isNaN(Number(url.substring(1)))) {
+      Store().setItem("url", `http://localhost${url}`);
+      return `http://localhost${url}`
+    } else if (url.length > 0 && url[0] !== ':') {
+      Store().setItem("url", `http://${url}`);
+      return `http://${url}`;
+    } else {
+      return 'invalid URL';
+    }
   }
 };
 
