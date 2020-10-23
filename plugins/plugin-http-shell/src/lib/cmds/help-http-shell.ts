@@ -13,37 +13,80 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
- import { Registrar, MultiModalResponse } from "@kui-shell/core";
+​
+ import { Registrar, NavResponse } from "@kui-shell/core";
  import { toplevelUsage as usage } from '../usage'
 // import Debug from "debug";
 
 // const debug = Debug("plugins/plugin-http-shell/test");
-
-const resp: MultiModalResponse = {
-    metadata: { name: "HTTP Shell Help" },
-    kind: "Top",
-    modes: [
+​
+const resp: NavResponse = {
+  apiVersion: 'kui-shell/v1',
+  kind: 'NavResponse',
+  breadcrumbs: [{ label: "Help" }, { label: "HTTP Shell" }],
+  menus: [
       {
-        mode: "Available commands",
-        content: `
-| command | description | example
-|---|---|---|
-| h set auth | opens a dialog to sets the basic authentication credentials to use in further requests | > h set auth |
-| h reset auth | clear the basic authentication credentials | > h reset auth |
-| h set url <url> | sets the base url to use in further requests, if <url> does not include the protocol, http is assumed, if <url> only specifies the port (e.g. :8080), localhost is assumed | > h set url http://127.0.0.1:8080 |
-| h get url | prints the base url | > h get url |
-| h get <uri> | executes the GET request to url=<base-url>+<uri> | > h get /messages |
-| edit <file> | opens <file> for editing. Tip, hit key F1 for list of editor commands | > edit body.json |
-| h post <uri> <file> | executes the request POST <base-url>+<uri>, sending the content of <file> as the request body | > h post /messages msg.json |
-| h put <uri> <file> | executes the request PUT <base-url>+<uri>, sending the content of <file> as the request body | > h put /messages/foo msg.json |
-| h patch <uri> <file> | executes the request PATCH <base-url>+<uri>, sending the content of <file> as the request body | > h patch /messages msg.json |
-| h delete <uri> | executes the DELETE request to url=<base-url>+<uri> | > h delete /messages |
-| h set header <name> <value> | set the header <name> to <value> | > h set header Authorization "Bearer 5f7f35efcb800f2502f95cb5" |
-| h get headers | prints the current set headers | > h get headers |
-| h reset headers | clears the headers | > h reset headers |
-`,
-        contentType: "text/markdown"
+        label: "Available commands",
+        items: [
+          { mode: 'Authentication',
+            contentType: "text/markdown",
+            content: `
+#### set auth
+Opens a dialog to sets the basic authentication credentials to use in further requests
+​
+#### reset auth
+Clear the basic authentication credentials
+`
+          },
+          { mode: 'Configuration',
+            contentType: "text/markdown",
+            content: `
+#### set url <url>
+Sets the base url to use in further requests. If <url> does not include the protocol, http is assumed. If <url> only specifies the port (e.g. :8080), localhost is assumed
+> e.g. [\`h set url http://127.0.0.1:8080\`](#kuiexec?command=h%20set%20url%20http%3A%2F%2F127.0.0.1%3A8080)
+​
+#### [get url](#kuiexec?command=h%20get%20url)
+Prints the base url
+​
+#### edit <file>
+Opens <file> for editing. Tip, hit key F1 for list of editor commands
+> e.g. [\`edit body.json\`](#kuiexec?command=edit%20body.json)
+`
+          },
+          { mode: 'Access Methods',
+            contentType: "text/markdown",
+            content: `
+#### get <uri>
+Executes the GET request to url=<base-url>+<uri>
+> e.g. \`h get /messages\`
+​
+#### post <uri> <file>
+Executes the request POST <base-url>+<uri>, sending the content of <file> as the request body
+> e.g. [\`h post /messages msg.json\`](#kuiexec?command=h%20post%20%2Fmessages%20msg.json)
+​
+#### put <uri> <file>
+Executes the request PUT <base-url>+<uri>, sending the content of <file> as the request body
+> e.g. [\`h put /messages/foo msg.json\`](#kuiexec?command=h%20put%20%2Fmessages%2Ffoo%20msg.json)
+​
+#### patch <uri> <file>
+Executes the request PATCH <base-url>+<uri>, sending the content of <file> as the request body
+> e.g. [\`h patch /messages msg.json\`](#kuiexec?command=h%20patch%20%2Fmessages%20msg.json)
+
+#### delete <uri>
+Executes the DELETE request to url=<base-url>+<uri>
+​
+#### set header <name> <value>
+Set the header <name> to <value>
+> e.g. \`h set header Authorization "Bearer 5f7f35efcb800f2502f95cb5"\`
+​
+#### [get headers](#kuiexec?command=h%20get%20headers)
+Prints the current set headers
+​
+#### [clear headers](#kuiexec?command=h%20reset%20headers)
+Clears the headers
+`
+          }
+        ]
       }
     ]
   };
