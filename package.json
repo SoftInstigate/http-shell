@@ -3,7 +3,13 @@
   "version": "0.0.2",
   "description": "A CLI tool that provides developers with a modern alternative to HTTP clients for interacting with APIs.",
   "homepage": "https://github.com/SoftInstigate/http-shell",
-  "keywords": ["API", "REST", "HTTP", "cli", "shell"],
+  "keywords": [
+    "API",
+    "REST",
+    "HTTP",
+    "cli",
+    "shell"
+  ],
   "author": "Andrea Di Cesare (andrea@softinstigate.com)",
   "license": "Apache-2.0",
   "bugs": {
@@ -37,10 +43,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@kui-shell/builder": "^9.0.0",
-    "@kui-shell/proxy": "^9.0.0",
-    "@kui-shell/react": "^9.0.0",
-    "@kui-shell/webpack": "^9.0.0",
+    "@kui-shell/builder": "^9.1.0",
+    "@kui-shell/proxy": "^9.1.0",
+    "@kui-shell/react": "^9.1.0",
+    "@kui-shell/webpack": "^9.1.0",
     "@types/carbon-components-react": "7.10.9",
     "@types/carbon__icons-react": "10.10.0",
     "@types/node": "12.12.31",
@@ -67,14 +73,14 @@
   },
   "dependencies": {
     "@kui-shell/client": "file:./plugins/plugin-client-default",
-    "@kui-shell/core": "^9.0.0",
-    "@kui-shell/plugin-bash-like": "^9.0.0",
-    "@kui-shell/plugin-carbon-themes": "^9.0.0",
-    "@kui-shell/plugin-client-common": "^9.0.0",
-    "@kui-shell/plugin-core-support": "^9.0.0",
-    "@kui-shell/plugin-electron-components": "^9.0.0",
-    "@kui-shell/plugin-git": "^9.0.0",
-    "@kui-shell/plugin-proxy-support": "^9.0.0",
+    "@kui-shell/core": "^9.1.0",
+    "@kui-shell/plugin-bash-like": "^9.1.0",
+    "@kui-shell/plugin-carbon-themes": "^9.1.0",
+    "@kui-shell/plugin-client-common": "^9.1.0",
+    "@kui-shell/plugin-core-support": "^9.1.0",
+    "@kui-shell/plugin-electron-components": "^9.1.0",
+    "@kui-shell/plugin-git": "^9.1.0",
+    "@kui-shell/plugin-proxy-support": "^9.1.0",
     "@kui-shell/plugin-http-shell": "file:./plugins/plugin-http-shell",
     "@types/superagent": "^4.1.10",
     "superagent": "^6.1.0"
