@@ -112,7 +112,7 @@
                   "attributes": [
                     {
                       "key": "VERSION",
-                      "value": "0.0.2"
+                      "value": "0.0.3"
                     }
                   ],
                   "key": "COMPONENT"
@@ -238,7 +238,7 @@
                     "attributes": [
                       {
                         "key": "VERSION",
-                        "value": "0.0.2"
+                        "value": "0.0.3"
                       }
                     ],
                     "key": "COMPONENT"

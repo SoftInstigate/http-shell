@@ -1,6 +1,6 @@
 {
   "name": "http-shell",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A CLI tool that provides developers with a modern alternative to HTTP clients for interacting with APIs.",
   "homepage": "https://github.com/SoftInstigate/http-shell",
   "keywords": [

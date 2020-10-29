@@ -1,6 +1,6 @@
 {
   "name": "@kui-shell/plugin-http-shell",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "HTTP Shell",
   "main": "dist/index.js",
   "module": "mdist/index.js",
