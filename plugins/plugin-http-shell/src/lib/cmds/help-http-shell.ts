@@ -33,9 +33,11 @@ const resp: NavResponse = {
             content: `
 #### set auth
 Opens a dialog to sets the basic authentication credentials to use in further requests
+> e.g. [\`h set auth\`](#kuiexec?command=h%20set%20auth)
 ​
 #### reset auth
 Clear the basic authentication credentials
+> e.g. [\`h reset auth\`](#kuiexec?command=h%20reset%20auth)
 `
           },
           { mode: 'Configuration',
@@ -58,7 +60,7 @@ Opens <file> for editing. Tip, hit key F1 for list of editor commands
             content: `
 #### get <uri>
 Executes the GET request to url=<base-url>+<uri>
-> e.g. \`h get /messages\`
+> e.g. [\`h get /messages\`](#kuiexec?command=h%20get%20/messages)
 ​
 #### post <uri> <file>
 Executes the request POST <base-url>+<uri>, sending the content of <file> as the request body
@@ -77,13 +79,15 @@ Executes the DELETE request to url=<base-url>+<uri>
 ​
 #### set header <name> <value>
 Set the header <name> to <value>
-> e.g. \`h set header Authorization "Bearer 5f7f35efcb800f2502f95cb5"\`
+> e.g. [\`h set header Authorization "Bearer 5f7f35efcb800f2502f95cb5"\`](#kuiexec?command=h%20set%20header%20Authorization%20"Bearer%205f7f35efcb800f2502f95cb5")
 ​
 #### [get headers](#kuiexec?command=h%20get%20headers)
 Prints the current set headers
+> e.g. [\`h get headers\`](#kuiexec?command=h%20get%20headers)
 ​
-#### [clear headers](#kuiexec?command=h%20reset%20headers)
+#### [reset headers](#kuiexec?command=h%20reset%20headers)
 Clears the headers
+> e.g. [\`h reset headers\`](#kuiexec?command=h%20reset%20headers)
 `
           }
         ]
