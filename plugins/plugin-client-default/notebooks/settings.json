@@ -112,63 +112,7 @@
                 "history": 251,
                 "env": {}
               },
-              "response": {
-                "apiVersion": "kui-shell/v1",
-                "kind": "RadioTable",
-                "title": "Temi disponibili",
-                "header": {
-                  "cells": [
-                    "Tema",
-                    {
-                      "value": "Stile",
-                      "hints": "hide-with-narrow-window"
-                    },
-                    {
-                      "value": "Provider",
-                      "hints": "hide-with-sidecar"
-                    }
-                  ]
-                },
-                "body": [
-                  {
-                    "nameIdx": 0,
-                    "cells": [
-                      "Carbon Gray10",
-                      {
-                        "value": "chiaro",
-                        "hints": "hide-with-narrow-window"
-                      },
-                      {
-                        "value": "plugin-carbon-themes",
-                        "hints": [
-                          "hide-with-sidecar",
-                          "sub-text"
-                        ]
-                      }
-                    ],
-                    "onSelect": "theme set \"Carbon Gray10\""
-                  },
-                  {
-                    "nameIdx": 0,
-                    "cells": [
-                      "Carbon Gray90",
-                      {
-                        "value": "scuro",
-                        "hints": "hide-with-narrow-window"
-                      },
-                      {
-                        "value": "plugin-carbon-themes",
-                        "hints": [
-                          "hide-with-sidecar",
-                          "sub-text"
-                        ]
-                      }
-                    ],
-                    "onSelect": "theme set \"Carbon Gray90\""
-                  }
-                ],
-                "defaultSelectedIdx": 1
-              },
+              
               "responseType": "ScalarResponse",
               "historyIdx": 251
             },

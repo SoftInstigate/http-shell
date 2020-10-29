@@ -7,7 +7,7 @@
   "spec": {
     "splits": [
       {
-        "uuid": "3_c57e811f-2da8-557e-a402-9f0950407675",
+        "uuid": "2_c57e811f-2da8-557e-a402-9f0950407675",
         "blocks": [
           {
             "response": {
@@ -305,67 +305,155 @@
             "state": "valid-response"
           },
           {
-            "response": true,
-            "historyIdx": 251,
+            "response": {
+              "apiVersion": "kui-shell/v1",
+              "kind": "NavResponse",
+              "breadcrumbs": [
+                {
+                  "label": "Help"
+                },
+                {
+                  "label": "HTTP Shell"
+                }
+              ],
+              "menus": [
+                {
+                  "label": "Available commands",
+                  "items": [
+                    {
+                      "mode": "Authentication",
+                      "contentType": "text/markdown",
+                      "content": "\n#### set auth\nOpens a dialog to sets the basic authentication credentials to use in further requests\n> e.g. [`h set auth`](#kuiexec?command=h%20set%20auth)\n​\n#### reset auth\nClear the basic authentication credentials\n> e.g. [`h reset auth`](#kuiexec?command=h%20reset%20auth)\n"
+                    },
+                    {
+                      "mode": "Configuration",
+                      "contentType": "text/markdown",
+                      "content": "\n#### set url <url>\nSets the base url to use in further requests. If <url> does not include the protocol, http is assumed. If <url> only specifies the port (e.g. :8080), localhost is assumed\n> e.g. [`h set url http://127.0.0.1:8080`](#kuiexec?command=h%20set%20url%20http%3A%2F%2F127.0.0.1%3A8080)\n​\n#### [get url](#kuiexec?command=h%20get%20url)\nPrints the base url\n​\n#### edit <file>\nOpens <file> for editing. Tip, hit key F1 for list of editor commands\n> e.g. [`edit body.json`](#kuiexec?command=edit%20body.json)\n"
+                    },
+                    {
+                      "mode": "Access Methods",
+                      "contentType": "text/markdown",
+                      "content": "\n#### get <uri>\nExecutes the GET request to url=<base-url>+<uri>\n> e.g. [`h get /messages`](#kuiexec?command=h%20get%20/messages)\n​\n#### post <uri> <file>\nExecutes the request POST <base-url>+<uri>, sending the content of <file> as the request body\n> e.g. [`h post /messages msg.json`](#kuiexec?command=h%20post%20%2Fmessages%20msg.json)\n​\n#### put <uri> <file>\nExecutes the request PUT <base-url>+<uri>, sending the content of <file> as the request body\n> e.g. [`h put /messages/foo msg.json`](#kuiexec?command=h%20put%20%2Fmessages%2Ffoo%20msg.json)\n​\n#### patch <uri> <file>\nExecutes the request PATCH <base-url>+<uri>, sending the content of <file> as the request body\n> e.g. [`h patch /messages msg.json`](#kuiexec?command=h%20patch%20%2Fmessages%20msg.json)\n\n#### delete <uri>\nExecutes the DELETE request to url=<base-url>+<uri>\n​\n#### set header <name> <value>\nSet the header <name> to <value>\n> e.g. [`h set header Authorization \"Bearer 5f7f35efcb800f2502f95cb5\"`](#kuiexec?command=h%20set%20header%20Authorization%20\"Bearer%205f7f35efcb800f2502f95cb5\")\n​\n#### [get headers](#kuiexec?command=h%20get%20headers)\nPrints the current set headers\n> e.g. [`h get headers`](#kuiexec?command=h%20get%20headers)\n​\n#### [reset headers](#kuiexec?command=h%20reset%20headers)\nClears the headers\n> e.g. [`h reset headers`](#kuiexec?command=h%20reset%20headers)\n"
+                    }
+                  ]
+                }
+              ]
+            },
+            "historyIdx": 11,
             "cwd": "~/development/http-shell",
             "command": "help http-shell",
             "startEvent": {
               "route": "/help/http-shell",
-              "startTime": 1602238674617,
+              "startTime": 1603990807370,
               "command": "help http-shell",
               "evaluatorOptions": {
+                "usage": {
+                  "title": "HTTP Shell",
+                  "header": "Commands to execute HTTP Shell requests",
+                  "available": [
+                    {
+                      "command": "h set auth",
+                      "docs": "sets the basic authentication credentials"
+                    },
+                    {
+                      "command": "h set url",
+                      "docs": "sets the base-url"
+                    },
+                    {
+                      "command": "h get url",
+                      "docs": "prints the base-url"
+                    },
+                    {
+                      "command": "h get <uri>",
+                      "docs": "executes the GET request to url=<base-url>+<uri>"
+                    },
+                    {
+                      "command": "h post <uri> <file>",
+                      "docs": "executes the POST request to url=<base-url>+<uri>"
+                    }
+                  ]
+                },
                 "plugin": "plugin-http-shell"
               },
-              "execType": 0,
-              "execUUID": "8f31f28d-c56f-4131-b42a-d0ecc919f199"
+              "execType": 3,
+              "execUUID": "8f31f28d-c56f-4131-b42a-d0ecc919f199",
+              "execOptions": {
+                "echo": true,
+                "type": 3,
+                "execUUID": "8f31f28d-c56f-4131-b42a-d0ecc919f199",
+                "history": 11,
+                "env": {}
+              },
+              "echo": true
             },
             "completeEvent": {
-              "execType": 0,
-              "completeTime": 1602238674736,
+              "execType": 3,
+              "completeTime": 1603990807411,
               "command": "help http-shell",
               "argvNoOptions": [
                 "help",
-                "help-shell"
+                "http-shell"
               ],
               "parsedOptions": {
                 "_": [
                   "help",
-                  "help-shell"
+                  "http-shell"
                 ]
               },
               "execUUID": "8f31f28d-c56f-4131-b42a-d0ecc919f199",
               "cancelled": false,
+              "echo": true,
               "evaluatorOptions": {
                 "plugin": "plugin-http-shell"
               },
               "execOptions": {
-                "type": 0,
-                "language": "it",
+                "echo": true,
+                "type": 3,
                 "execUUID": "8f31f28d-c56f-4131-b42a-d0ecc919f199",
-                "history": 251,
+                "history": 11,
                 "env": {}
               },
               "response": {
-                "metadata": {
-                  "name": "HTTP Shell Help"
-                },
-                "kind": "Top",
-                "modes": [
+                "apiVersion": "kui-shell/v1",
+                "kind": "NavResponse",
+                "breadcrumbs": [
                   {
-                    "mode": "Available commands",
-                    "content": "\n| command | description | example\n|---|---|---|\n| set auth <id> <password> | sets the basic authentication credentials to use in further requests | > set auth admin secret |\n| get auth | prints the basic authentication credentials | > get auth |\n| set url <url> | sets the base url to use in further requests | > set url http://127.0.0.1:8080 |\n| get url | prints the base url | > get url |\n| get <uri> | executes the GET request to url=<base-url>+<uri> | > get /collection |\n| edit <file> | opens <file> for editing | > edit body.json |\n| post <uri> <file> | executes the request POST <base-url>+<uri>, sending the content of <file> as the request body | > post /collection body.json |\n| put <uri> <file> | executes the request PUT <base-url>+<uri>, sending the content of <file> as the request body | > put /collection body.json |\n| patch <uri> <file> | executes the request PATCH <base-url>+<uri>, sending the content of <file> as the request body | > patch /collection body.json |\n| delete <uri> | executes the DELETE request to url=<base-url>+<uri> | > delete /collection |\n| set header <name> <value> | set the header <name> to <value> | > set header If-Match 5f7f35efcb800f2502f95cb5 |\n| get headers | prints the current set headers | > get headers |\n| clear headers | clears the headers | > clear headers |\n\n",
-                    "contentType": "text/markdown"
+                    "label": "Help"
+                  },
+                  {
+                    "label": "HTTP Shell"
+                  }
+                ],
+                "menus": [
+                  {
+                    "label": "Available commands",
+                    "items": [
+                      {
+                        "mode": "Authentication",
+                        "contentType": "text/markdown",
+                        "content": "\n#### set auth\nOpens a dialog to sets the basic authentication credentials to use in further requests\n> e.g. [`h set auth`](#kuiexec?command=h%20set%20auth)\n​\n#### reset auth\nClear the basic authentication credentials\n> e.g. [`h reset auth`](#kuiexec?command=h%20reset%20auth)\n"
+                      },
+                      {
+                        "mode": "Configuration",
+                        "contentType": "text/markdown",
+                        "content": "\n#### set url <url>\nSets the base url to use in further requests. If <url> does not include the protocol, http is assumed. If <url> only specifies the port (e.g. :8080), localhost is assumed\n> e.g. [`h set url http://127.0.0.1:8080`](#kuiexec?command=h%20set%20url%20http%3A%2F%2F127.0.0.1%3A8080)\n​\n#### [get url](#kuiexec?command=h%20get%20url)\nPrints the base url\n​\n#### edit <file>\nOpens <file> for editing. Tip, hit key F1 for list of editor commands\n> e.g. [`edit body.json`](#kuiexec?command=edit%20body.json)\n"
+                      },
+                      {
+                        "mode": "Access Methods",
+                        "contentType": "text/markdown",
+                        "content": "\n#### get <uri>\nExecutes the GET request to url=<base-url>+<uri>\n> e.g. [`h get /messages`](#kuiexec?command=h%20get%20/messages)\n​\n#### post <uri> <file>\nExecutes the request POST <base-url>+<uri>, sending the content of <file> as the request body\n> e.g. [`h post /messages msg.json`](#kuiexec?command=h%20post%20%2Fmessages%20msg.json)\n​\n#### put <uri> <file>\nExecutes the request PUT <base-url>+<uri>, sending the content of <file> as the request body\n> e.g. [`h put /messages/foo msg.json`](#kuiexec?command=h%20put%20%2Fmessages%2Ffoo%20msg.json)\n​\n#### patch <uri> <file>\nExecutes the request PATCH <base-url>+<uri>, sending the content of <file> as the request body\n> e.g. [`h patch /messages msg.json`](#kuiexec?command=h%20patch%20%2Fmessages%20msg.json)\n\n#### delete <uri>\nExecutes the DELETE request to url=<base-url>+<uri>\n​\n#### set header <name> <value>\nSet the header <name> to <value>\n> e.g. [`h set header Authorization \"Bearer 5f7f35efcb800f2502f95cb5\"`](#kuiexec?command=h%20set%20header%20Authorization%20\"Bearer%205f7f35efcb800f2502f95cb5\")\n​\n#### [get headers](#kuiexec?command=h%20get%20headers)\nPrints the current set headers\n> e.g. [`h get headers`](#kuiexec?command=h%20get%20headers)\n​\n#### [reset headers](#kuiexec?command=h%20reset%20headers)\nClears the headers\n> e.g. [`h reset headers`](#kuiexec?command=h%20reset%20headers)\n"
+                      }
+                    ]
                   }
                 ]
               },
-              "responseType": "MultiModalResponse",
-              "historyIdx": 251
+              "responseType": "NavResponse",
+              "historyIdx": 11
             },
             "isExperimental": false,
             "isReplay": true,
             "execUUID": "8f31f28d-c56f-4131-b42a-d0ecc919f199",
-            "startTime": 1602238674617,
-            "prefersTerminalPresentation": false,
+            "startTime": 1603990807370,
             "outputOnly": false,
             "state": "valid-response"
           }
