@@ -10,7 +10,7 @@ HTTP Shell is a tool built on top of IBM's open source [Kui framework](https://g
 
 ## Usage
 
-Find more **HTTP Shell**'s usage information, commands and examples on [RESTHeart documentation](https://restheart.org/docs/http-shell).
+Find more **HTTP Shell**'s usage information, commands and examples on [RESTHeart documentation](https://restheart.org/docs/plugins/dev-env/).
 
 ## Build from source
 
