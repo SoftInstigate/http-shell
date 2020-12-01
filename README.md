@@ -8,6 +8,12 @@ HTTP Shell is a tool built on top of IBM's open source [Kui framework](https://g
 
 ![HTTP Shell Image](./plugins/plugin-client-default/images/httpshellImage.png)
 
+## Installation
+
+We offer prebuilt images for Windows, MacOS and Linux.
+
+Get _HTTP Shell_ binary from the [releases download page](https://github.com/SoftInstigate/http-shell/releases)
+
 ## Usage
 
 Find more **HTTP Shell**'s usage information, commands and examples on [RESTHeart documentation](https://restheart.org/docs/plugins/dev-env/).
