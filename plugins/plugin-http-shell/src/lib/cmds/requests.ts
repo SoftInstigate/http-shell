@@ -144,9 +144,6 @@ export async function urlFile(
         return ret;
       })
       .catch((error: ResponseError) => {
-        const win = new BrowserWindow();
-        win.webContents.openDevTools();
-
         const method = error.response
           ? error.response["req"]
             ? error.response["req"]["method"]
