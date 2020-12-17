@@ -35,7 +35,7 @@ watcher. Each time you execute the second, an Electron window will
 open.
 
 ```sh
-npm run watch
+npm run start
 npm run open
 ```
 
